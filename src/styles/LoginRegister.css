@@ -1,0 +1,123 @@
+.LoginRegisterMain
+{
+    display: grid;
+    justify-content: center;
+    height: 100vh;
+    
+}
+.formsContainer
+{
+    display: flex;
+    flex-direction: row;
+    gap:1px
+}
+.LoginDiv
+{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    
+}
+.RegisterDiv
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+}
+.LoginForm
+{
+    display:flex;
+    flex-direction: column;
+    height: 50vh;
+    max-height: 500px;
+    justify-content: center;
+    background-color: Blue;
+    padding: 10px;
+    align-items: center;
+    gap: 3px;
+    width: 100vw;
+    max-width: 700px;
+    border-radius: 5px;
+}
+.RegisterForm
+{
+    display: flex;
+    flex-direction: column;
+    height: 50vh;
+    max-height: 500px;
+    justify-content: center;
+    background-color: red;
+    padding: 10px;
+    align-items: center;
+    gap:3px;
+    width: 100vw;
+    max-width: 700px;
+    border-radius: 5px;
+    
+}
+.LoginForm input 
+{
+    width: 350px;
+    height: 30px;
+    outline: none;
+    border-radius: 3px;
+    border: none;
+}
+.RegisterForm input
+{
+    width: 350px;
+    height: 30px;
+    outline: none;
+    border-radius: 3px;
+    border: none;
+}
+.LoginTitle
+{
+    text-align: center;
+}
+.RegisterTitle
+{
+    text-align: center;
+}
+.RegisterCheck
+{
+    display: flex;
+    justify-content: space-around;
+}
+.RegisterCheck input
+{
+    width: 50px;
+    height:auto;
+}
+.LoginBtn
+{
+    display: flex;
+    gap: 3px;
+}
+.LoginBtn button
+{   
+    width: 100px;
+    height: 40px;
+    border-radius: 5px;
+    background-color: red;
+    border:none;
+    outline: none;
+    cursor: pointer;
+}
+.RegisterBtn
+{
+    display: flex;
+    gap: 3px;
+}
+.RegisterBtn button
+{
+    width: 100px;
+    height: 40px;
+    border-radius: 5px;
+    background-color: blue;
+    border:none;
+    outline: none;
+    cursor: pointer;
+    color: whitesmoke;
+}
