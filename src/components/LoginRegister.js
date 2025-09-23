@@ -19,9 +19,9 @@ const registerSchema = yup.object().shape({
 
 const LoginRegister = () => {
 
-    const {register,handleSubmit,watch,formState:{errors}}=useForm({resolver:yupResolver(registerSchema)});
+    const {register,handleSubmit,watch,formState:{errors}}=useForm({resolver:yupResolver(registerSchema)});   //form validation
 
-    const [logindata , setLogindata] = useState({username:"",password:""});
+    const [logindata , setLogindata] = useState({username:"",password:""});        //state for saving input data
     
     const UserLoginData = useSelector((state)=> state.login);
 
@@ -34,7 +34,7 @@ const LoginRegister = () => {
         email : watch("email"),
     }
     
-    const LoginInput = (event)=>{
+    const LoginInput = (event)=>{        //data ro dar input dar in state mizare
         switch(event.target.name){
             case "username":
                 setLogindata({...logindata, username : event.target.value});
@@ -49,7 +49,7 @@ const LoginRegister = () => {
         }
     }
 
-    const HandleLogin = (event)=>{
+    const HandleLogin = (event)=>{      //dar submit maghadir ro dar state slice mizare va sepas axios ro ejra mikone
         event.preventDefault();
         dispatch(getUsername(logindata.username));
         dispatch(getPassword(logindata.password));
