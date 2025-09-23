@@ -63,6 +63,7 @@
     outline: none;
     border-radius: 3px;
     border: none;
+    padding: 5px;
 }
 .RegisterForm input
 {
@@ -71,14 +72,17 @@
     outline: none;
     border-radius: 3px;
     border: none;
+    padding: 5px;
 }
 .LoginTitle
 {
     text-align: center;
+    color: whitesmoke;
 }
 .RegisterTitle
 {
     text-align: center;
+    color: black;
 }
 .RegisterCheck
 {
@@ -93,12 +97,13 @@
 .LoginBtn
 {
     display: flex;
+    flex-direction: column;
     gap: 3px;
 }
 .LoginBtn button
 {   
-    width: 100px;
-    height: 40px;
+    width: 360px;
+    height: 35px;
     border-radius: 5px;
     background-color: red;
     border:none;
@@ -108,12 +113,13 @@
 .RegisterBtn
 {
     display: flex;
+    flex-direction: column;
     gap: 3px;
 }
 .RegisterBtn button
 {
-    width: 100px;
-    height: 40px;
+    width: 360px;
+    height: 35px;
     border-radius: 5px;
     background-color: blue;
     border:none;
