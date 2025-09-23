@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import {motion} from "framer-motion";
 import "../styles/LoginRegister.css";
 import {useSelector,useDispatch} from "react-redux";
+import { getUsername,getPassword } from '../features/login/loginSlice';
 import { axiosRegister } from '../features/register/registerSlice';
+import { axiosLogin } from '../features/login/loginSlice';
 
 const registerSchema = yup.object().shape({
     username: yup.string().matches(/(?=^[a-zA-Z])(?=.{3})[a-zA-Z0-9]/,"invalid username"),
@@ -19,7 +21,12 @@ const LoginRegister = () => {
 
     const {register,handleSubmit,watch,formState:{errors}}=useForm({resolver:yupResolver(registerSchema)});
 
-    const dispatch = useDispatch()
+    const [logindata , setLogindata] = useState({username:"",password:""});
+    
+    const UserLoginData = useSelector((state)=> state.login);
+
+    const dispatch = useDispatch();
+
 
     const RegisterDate = {
         username: watch("username"),
@@ -27,15 +34,36 @@ const LoginRegister = () => {
         email : watch("email"),
     }
     
+    const LoginInput = (event)=>{
+        switch(event.target.name){
+            case "username":
+                setLogindata({...logindata, username : event.target.value});
+                
+                break;
+            case "password":
+                setLogindata({...logindata, password : event.target.value});
+                
+                break;
+            default:
+                break;        
+        }
+    }
+
+    const HandleLogin = (event)=>{
+        event.preventDefault();
+        dispatch(getUsername(logindata.username));
+        dispatch(getPassword(logindata.password));
+        dispatch(axiosLogin());
+    }
 
     return (
         <div className="LoginRegisterMain">
             <div className="formsContainer">
                 <div className="LoginDiv">
-                    <form className="LoginForm">
+                    <form className="LoginForm" onSubmit={HandleLogin}>
                         <h3 className="LoginTitle">Login Here</h3>
-                        <input type="text" placeholder="username" />
-                        <input type="password" placeholder="password" />
+                        <input name="username" type="text" value={logindata.username} onChange={LoginInput} placeholder="username" />
+                        <input name="password" type="password" value={logindata.password} onChange={LoginInput} placeholder="password" />
                         <div className="LoginBtn">
                             <button type="submit">Login</button>
                             <button type="button">Create Account</button>
