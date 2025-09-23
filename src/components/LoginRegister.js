@@ -5,7 +5,7 @@ import * as yup from "yup";
 import {motion} from "framer-motion";
 import "../styles/LoginRegister.css";
 import {useSelector,useDispatch} from "react-redux";
-import { axiosLogin } from '../features/login/loginSlice';
+import { axiosRegister } from '../features/register/registerSlice';
 
 const registerSchema = yup.object().shape({
     username: yup.string().matches(/(?=^[a-zA-Z])(?=.{3})[a-zA-Z0-9]/,"invalid username"),
