@@ -53,7 +53,7 @@ const LoginRegister = () => {
         event.preventDefault();
         dispatch(getUsername(logindata.username));
         dispatch(getPassword(logindata.password));
-        dispatch(axiosLogin());
+        dispatch(axiosLogin(logindata));       //state logindata ro be vorodi axios midim
     }
 
     return (
