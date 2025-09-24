@@ -13,8 +13,8 @@ const initialState = {
 const baseUrl = "https://dummyjson.com";
 
 const axiosLogin = createAsyncThunk("login/axiosLogin",async(userdata)=>{  //userdata hammon vorodi state hast ke be tabe axiosLogin dade shod
-    const response = await axios.post(`${baseUrl}/auth/login`, {username : userdata.username , password : userdata.password});
-    return response;
+    const response = await axios.post(`${baseUrl}/auth/login`, {username : userdata.username , password : userdata.password}); //async and await baes mishe ke js montazer promise bashe ta anjam bshe
+    return response;   // response ro return mikonim ta dar axiosLogin gharar bgire
 })
 
 const LoginSlice = createSlice({

@@ -21,7 +21,7 @@ const LoginRegister = () => {
 
     const {register,handleSubmit,watch,formState:{errors}}=useForm({resolver:yupResolver(registerSchema)});   //form validation
 
-    /* const [logindata , setLogindata] = useState({username:"",password:""});        //state for saving input data */
+    /* const [logindata , setLogindata] = useState({username:"",password:""});        //state for saving input data */       //****** maghadir comment shode yani az ravesh dige raftam ******/
     
     const UserLoginData = useSelector((state)=> state.login);
 
