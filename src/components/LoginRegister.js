@@ -21,7 +21,7 @@ const LoginRegister = () => {
 
     const {register,handleSubmit,watch,formState:{errors}}=useForm({resolver:yupResolver(registerSchema)});   //form validation
 
-    const [logindata , setLogindata] = useState({username:"",password:""});        //state for saving input data
+    /* const [logindata , setLogindata] = useState({username:"",password:""});        //state for saving input data */
     
     const UserLoginData = useSelector((state)=> state.login);
 
@@ -34,7 +34,7 @@ const LoginRegister = () => {
         email : watch("email"),
     }
     
-    const LoginInput = (event)=>{        //data ro dar input dar in state mizare
+    /* const LoginInput = (event)=>{        //data ro dar input dar in state mizare
         switch(event.target.name){
             case "username":
                 setLogindata({...logindata, username : event.target.value});
@@ -47,13 +47,13 @@ const LoginRegister = () => {
             default:
                 break;        
         }
-    }
+    } */
 
     const HandleLogin = (event)=>{      //dar submit maghadir ro dar state slice mizare va sepas axios ro ejra mikone
         event.preventDefault();
-        dispatch(getUsername(logindata.username));
-        dispatch(getPassword(logindata.password));
-        dispatch(axiosLogin(logindata));       //state logindata ro be vorodi axios midim
+        /* dispatch(getUsername(logindata.username));
+        dispatch(getPassword(logindata.password)); */
+        dispatch(axiosLogin(UserLoginData));       //UserLoginData ke hamoon state dakhel LoginSlice hast ro be vorodi axios midim
     }
 
     return (
@@ -62,8 +62,8 @@ const LoginRegister = () => {
                 <div className="LoginDiv">
                     <form className="LoginForm" onSubmit={HandleLogin}>
                         <h3 className="LoginTitle">Login Here</h3>
-                        <input name="username" type="text" value={logindata.username} onChange={LoginInput} placeholder="username" />
-                        <input name="password" type="password" value={logindata.password} onChange={LoginInput} placeholder="password" />
+                        <input name="username" type="text" value={UserLoginData.username} onChange={(event)=>dispatch(getUsername(event.target.value))} placeholder="username" />
+                        <input name="password" type="password" value={UserLoginData.password} onChange={(event)=>dispatch(getPassword(event.target.value))} placeholder="password" />
                         <div className="LoginBtn">
                             <button type="submit">Login</button>
                             <button type="button">Create Account</button>
