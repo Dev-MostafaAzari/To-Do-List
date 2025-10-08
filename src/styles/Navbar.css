@@ -1,0 +1,29 @@
+.Navbar
+{
+    height: 100px;
+}
+.NavbarWrapper
+{
+    max-width: 1366px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+.NavbarWrapper h1 
+{
+    color: purple;
+    letter-spacing: 5px;
+}
+.Social
+{
+    display: flex;
+    align-items: center;
+    gap:10px;
+}
+.Social img 
+{
+    max-width: 30px;
+
+}

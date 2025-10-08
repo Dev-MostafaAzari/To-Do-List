@@ -1,12 +1,21 @@
-import LoginRegister from "./components/LoginRegister";
-import DoList from "./components/ToDoList";
+import LoginRegister from "./components/LoginRegister/LoginRegister";
+import DoList from "./components/ToDoList/ToDoList";
+import { BrowserRouter,Routes,Route } from "react-router-dom";
+import "./styles/App.css";
+import Navbar from "./components/Navbar/Navbar";
+
 
 function App() {
   return (
-    <div className="App">
-      {/* <LoginRegister/> */}
-      <DoList/>
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Navbar/>
+        <Routes>
+          <Route path="/Login" element={<LoginRegister/>}/>
+          <Route path="/ToDoList" element={<DoList/>}/>
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 
