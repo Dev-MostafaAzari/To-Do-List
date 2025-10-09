@@ -15,14 +15,14 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: white;
+    background: linear-gradient(180deg,#ebebf5,#109c9c);
+    z-index: 999;
 }
 .Links
 {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    width: 100%;
     font-size: 30px;
     text-align: center;
     font-weight: 600;
@@ -38,5 +38,6 @@
     background-color: transparent;
     z-index: 999;
     border: none;
+    cursor: pointer;
 
 }
