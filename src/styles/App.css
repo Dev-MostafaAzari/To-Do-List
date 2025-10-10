@@ -17,3 +17,7 @@ a
 {
     height: 100vh;
 }
+input:-webkit-autofill {         /* bray inke dar autoFill style taghir nakone */
+    box-shadow: 0 0 0 1000px #0c0c1d inset !important;
+    -webkit-text-fill-color: gray !important;
+}

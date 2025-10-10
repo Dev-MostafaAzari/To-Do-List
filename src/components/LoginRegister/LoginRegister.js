@@ -58,10 +58,10 @@ const LoginRegister = () => {
 
     return (
         <div className="LoginRegisterMain">
-            <div className="formsContainer">
+            <div className="FormsWrapper">
                 <div className="LoginDiv">
                     <form className="LoginForm" onSubmit={HandleLogin}>
-                        <h3 className="LoginTitle">Login Here</h3>
+                        <h1>Login Here</h1>
                         <input name="username" type="text" value={UserLoginData.username} onChange={(event)=>dispatch(getUsername(event.target.value))} placeholder="username" />
                         <input name="password" type="password" value={UserLoginData.password} onChange={(event)=>dispatch(getPassword(event.target.value))} placeholder="password" />
                         <div className="LoginBtn">
@@ -72,7 +72,7 @@ const LoginRegister = () => {
                 </div>
                 <div className="RegisterDiv">
                     <form className="RegisterForm" onSubmit={handleSubmit()}>
-                        <h3 className="RegisterTitle">Register Here</h3>
+                        <h1>Register Here</h1>
                         <input type="text" placeholder="username" {...register("username")} />
                         <span>{errors.username?.message}</span>
                         <input type="text" placeholder="gmail" {...register("email")} />
@@ -82,7 +82,7 @@ const LoginRegister = () => {
                         <input type="password" placeholder="confirmpass" {...register("confirmPass")} />
                         <span>{errors.confirmPass?.message}</span>
                         <div className="RegisterCheck">
-                            <span className="RegisterSpan">I read the terms</span>
+                            <span id="RegisterTermsSpan">I read the terms</span>
                             <input type="checkbox" {...register("acceptTerms")} />
                             <span>{errors.acceptTerms?.message}</span>
                         </div>
