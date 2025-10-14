@@ -2,9 +2,145 @@
 {
     height: calc(100vh - 100px);
     width: 100%;
+    background: linear-gradient(180deg , #0c0c1d,#111134);
 }
 .ToDoListWrapper
 {
     width: 1366px;
     height: 100%;
+    color:white;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+}
+.ListHeader
+{
+    width: 100%;
+    flex:1;
+    display: flex;
+    align-items: center;
+}
+.ListHeader h1 
+{
+    font-size: 60px;
+    color: gray;
+}
+.DoLists
+{
+    flex:2;
+    width: 100%;
+}
+.DoLists table
+{
+    width: 100%;
+}
+.DoLists tbody
+{
+    text-align: center;
+}
+.DoLists th 
+{
+    font-size: 40px;
+}
+.DoLists td
+{
+    padding: 20px;
+    font-size: 20px;
+}
+.DoLists table
+{
+    border-collapse: collapse;
+}
+.DoLists th 
+{
+    border-bottom: 1px solid gray;
+}
+.DoLists td 
+{
+    border-bottom: 1px solid rgba(116, 115, 115, 0.5);
+}
+.DoLists input 
+{
+    scale: 2;
+}
+.buttons
+{
+    flex: 1;
+    width: 100%;
+    display: flex;
+    align-items: start;
+    justify-content: end;
+}
+.buttons button 
+{
+    padding: 20px;
+    font-size: 20px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+.AddTask
+{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 600px;
+    height: 500px;
+    gap:10px;
+    top:50%;
+    left:50%;
+    transform: translate(-50% , -50% );
+    z-index: 998;
+    background-color: white;
+    color: black;
+    padding: 30px;
+    border-radius: 15px;
+}
+.AddTask h1 
+{
+    font-size: 50px;
+    text-align: center;
+}
+.AddTask .AddTaskCloseBtn
+{
+    width: 100%;
+    display: flex;
+    justify-content: end;
+}
+.AddTask .AddTaskCloseBtn button
+{
+    outline: none;
+    border:none;
+    cursor: pointer;
+    background-color: transparent;
+    font-size: 20px;
+}
+.AddTask .AddTaskInput
+{
+    display:flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+.AddTaskInput input 
+{
+    width: 500px;
+    padding: 20px;
+    font-size: 20px;
+    border-radius: 20px;
+}
+.AddTaskInput button 
+{
+    padding: 10px;
+    font-size: 20px;
+    border-radius: 15px;
+    cursor: pointer;
+    background-color: darkblue;
+    color:white;
+    border:none;
 }
