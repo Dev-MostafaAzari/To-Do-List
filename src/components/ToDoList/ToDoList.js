@@ -1,14 +1,48 @@
-import React from 'react';
-import {motion} from "framer-motion";
+import React, { useState } from 'react';
+import { motion } from "framer-motion";
 import "../../styles/ToDoList.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClose, faTrash } from '@fortawesome/free-solid-svg-icons';
 
+const ToDoListVariants = {
+    initial:{
+        x:-200,
+        opacity:0,
+    },
+    animate : {
+        x:0,
+        opacity:1,
+        transition:{
+            duration:0.5
+        }
+    }
 
-const DoList = ()=>{
-    return(
+};
+
+const AddTaskVariants = {
+    initial:{
+        opacity:0,
+        display:"none",
+    },
+    IsTrue:{
+        opacity:1,
+        display:"block",
+    },
+    IsFalse:{
+        opacity:0,
+        dispaly:"none",
+    },
+}
+
+
+
+const DoList = () => {
+
+    const [addTask,setAddTask]=useState(false);
+
+    return (
         <div className="ToDoList">
-            <div className="ToDoListWrapper">
+            <motion.div variants={ToDoListVariants} initial="initial" animate="animate" className="ToDoListWrapper">
                 <div className="ListHeader">
                     <h1>Your ToDo List</h1>
                 </div>
@@ -25,36 +59,38 @@ const DoList = ()=>{
                             <tr>
                                 <td>1</td>
                                 <td>send hello to your friends</td>
-                                <td><input type="checkbox"/></td>
+                                <td><input type="checkbox" /></td>
                             </tr>
                             <tr>
                                 <td>1</td>
                                 <td>send hello to your friends</td>
-                                <td><input type="checkbox"/></td>
+                                <td><input type="checkbox" /></td>
                             </tr>
                             <tr>
                                 <td>1</td>
                                 <td>send hello to your friends</td>
-                                <td><input type="checkbox"/></td>
+                                <td><input type="checkbox" /></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
                 <div className="buttons">
-                    <button>Add Task</button>
+                    <button onClick={()=>setAddTask(prev => !prev)}>Add Task</button>
                 </div>
-                <div className="AddTask">
-                    <div className="AddTaskCloseBtn">
-                        <button><FontAwesomeIcon icon={faClose}/></button>
-                    </div>
-                    <h1>Add New Task</h1>
-                    <form className="AddTaskInput">
-                        <input type="text" placeholder="Task Name"/>
-                        <input type="number" placeholder="UserID"/>
-                        <button type="submit">Add Task</button>
-                    </form>
-                </div>
-            </div>
+                <motion.div variants={AddTaskVariants} animate={addTask ? "IsTrue" : "IsFalse"} initial="initial" transition={{duration:0.3}} className="AddTaskWrapper">
+                    <motion.div variants={AddTaskVariants} className="AddTask">
+                        <div className="AddTaskCloseBtn">
+                            <button onClick={()=>setAddTask(prev => !prev)}><FontAwesomeIcon icon={faClose} /></button>
+                        </div>
+                        <h1>Add New Task</h1>
+                        <form className="AddTaskInput">
+                            <input type="text" placeholder="Task Name" />
+                            <input type="number" placeholder="UserID" />
+                            <button type="submit">Add Task</button>
+                        </form>
+                    </motion.div>
+                </motion.div>
+            </motion.div>
         </div>
     )
 }
