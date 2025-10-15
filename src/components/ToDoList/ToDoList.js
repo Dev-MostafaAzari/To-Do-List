@@ -37,6 +37,33 @@ const AddTaskVariants = {
     },
 }
 
+const LoadingAnimationVariants = {
+    OuterRingInit:{
+        scale:1,
+        
+    },
+    OuterRingAnim : {
+        scale:1.5,
+        transition:{
+            type:"mirror",
+            duration:1,
+            repeat:Infinity,
+        }
+    },
+    InnerRingInit:
+    {
+        scale:2,
+    },
+    InnerRingAnim:{
+        scale:0.8,
+        transition:{
+            type:"mirror",
+            duration:1,
+            repeat:Infinity,
+        }
+    },
+}
+
 const DoList = () => {
 
     const dispatch = useDispatch();
@@ -54,8 +81,8 @@ const DoList = () => {
                 <div className="ListHeader">
                     <h1>Your ToDo List</h1>
                 </div>
-                <div className="DoLists">
-                    {loading ? <span>loading...</span> : <table>
+                <div className="DoLists">   {/* dar inja yek loding dorost kardam ke ta zamanike loading hast elemnt loading ro nshoon bde va bad az daryaft data az api oon ro hide va data ro nshoon bde */}
+                    {loading ? <motion.div variants={LoadingAnimationVariants} initial="OuterRingInit" animate="OuterRingAnim" className="LoadingAnimation"><motion.div variants={LoadingAnimationVariants} initial="InnerRingInit" animate="InnerRingAnim" className="LoadingAnimation2"></motion.div></motion.div> : <table>
                         <thead>
                             <tr>
                                 <th>No.</th>
