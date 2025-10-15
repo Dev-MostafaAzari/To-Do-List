@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from "framer-motion";
 import "../../styles/ToDoList.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClose, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { useSelector,useDispatch } from 'react-redux';
+import { axiosGetTodo } from '../../features/TodoList/todolistSlice';
+import { getTodo,getUserID } from '../../features/TodoList/todolistSlice';
 
 const ToDoListVariants = {
     initial:{
@@ -34,9 +37,14 @@ const AddTaskVariants = {
     },
 }
 
-
-
 const DoList = () => {
+
+    const dispatch = useDispatch();
+    const {loading,todo,addTodo,addUserId} = useSelector(state=>state.todoList);
+
+    useEffect(()=>{
+        dispatch(axiosGetTodo());
+    },[])
 
     const [addTask,setAddTask]=useState(false);
 
@@ -47,7 +55,7 @@ const DoList = () => {
                     <h1>Your ToDo List</h1>
                 </div>
                 <div className="DoLists">
-                    <table>
+                    {loading ? <span>loading...</span> : <table>
                         <thead>
                             <tr>
                                 <th>No.</th>
@@ -56,23 +64,15 @@ const DoList = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>send hello to your friends</td>
-                                <td><input type="checkbox" /></td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>send hello to your friends</td>
-                                <td><input type="checkbox" /></td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>send hello to your friends</td>
-                                <td><input type="checkbox" /></td>
-                            </tr>
+                            {todo?.todos?.map((element) =>         /* bayad be in shek map mikardim chon dar todo yek object be name todos darim */
+                                <tr key={element.id}>
+                                    <td>{element.id}</td>
+                                    <td>{element.todo}</td>
+                                    <td><input type="checkbox" /></td>
+                                </tr>
+                            )}
                         </tbody>
-                    </table>
+                    </table>}
                 </div>
                 <div className="buttons">
                     <button onClick={()=>setAddTask(prev => !prev)}>Add Task</button>
