@@ -4,8 +4,8 @@ import "../../styles/ToDoList.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClose, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { useSelector,useDispatch } from 'react-redux';
-import { axiosGetTodo } from '../../features/TodoList/todolistSlice';
-import { getTodo,getUserID } from '../../features/TodoList/todolistSlice';
+import { axiosGetTodo,axiosAddTask } from '../../features/TodoList/todolistSlice';
+import { getTodo,getUserID,IsAddTask} from '../../features/TodoList/todolistSlice';
 
 const ToDoListVariants = {
     initial:{
@@ -67,13 +67,19 @@ const LoadingAnimationVariants = {
 const DoList = () => {
 
     const dispatch = useDispatch();
-    const {loading,todo,addTodo,addUserId} = useSelector(state=>state.todoList);
+    const {loading,todo,addTodo,completed,addUserId,error,addTask} = useSelector(state=>state.todoList);
 
     useEffect(()=>{
         dispatch(axiosGetTodo());
-    },[])
+    },[]);
 
-    const [addTask,setAddTask]=useState(false);
+    const HandleAddTask = ()=>{
+        dispatch(IsAddTask());
+    };
+
+    const SubmitTaskHandle = ()=>{
+        dispatch(axiosAddTask({addUserId,addTodo,completed}));
+    }
 
     return (
         <div className="ToDoList">
@@ -102,18 +108,18 @@ const DoList = () => {
                     </table>}
                 </div>
                 <div className="buttons">
-                    <button onClick={()=>setAddTask(prev => !prev)}>Add Task</button>
+                    <button onClick={HandleAddTask}>Add Task</button>
                 </div>
                 <motion.div variants={AddTaskVariants} animate={addTask ? "IsTrue" : "IsFalse"} initial="initial" transition={{duration:0.3}} className="AddTaskWrapper">
                     <motion.div variants={AddTaskVariants} className="AddTask">
                         <div className="AddTaskCloseBtn">
-                            <button onClick={()=>setAddTask(prev => !prev)}><FontAwesomeIcon icon={faClose} /></button>
+                            <button onClick={HandleAddTask}><FontAwesomeIcon icon={faClose} /></button>
                         </div>
                         <h1>Add New Task</h1>
                         <form className="AddTaskInput">
-                            <input type="text" placeholder="Task Name" />
-                            <input type="number" placeholder="UserID" />
-                            <button type="submit">Add Task</button>
+                            <input type="text"  onChange={(e)=>{dispatch(getTodo(e.target.value))}} placeholder="Task Name" />
+                            <input type="number"  onChange={(e)=>{dispatch(getUserID(+e.target.value))}} placeholder="UserID" />
+                            <button onClick={SubmitTaskHandle} type="button">Add Task</button>
                         </form>
                     </motion.div>
                 </motion.div>

@@ -2,13 +2,15 @@ import { createSlice,createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 
+
 const initialState = {
     loading:false,
     todo:[],
     addTodo:"",
     completed:false,
-    addUserId:null,
+    addUserId:0,
     error : "",
+    addTask:false,
 };
 
 const BaseUrl="https://dummyjson.com/" ;
@@ -16,6 +18,11 @@ const BaseUrl="https://dummyjson.com/" ;
 const axiosGetTodo = createAsyncThunk("TodoList/axiosGetTodo",async()=>{
     const response = await axios.get(`${BaseUrl}todos?limit=7`);
     return response.data;
+});
+
+const axiosAddTask = createAsyncThunk("TodoList/axiosAddTask",async(data)=>{
+    const response = await axios.post(`${BaseUrl}todos/add`,{todo:data.addTodo , completed:data.completed , userId:data.addUserId});
+    return response;
 });
 
 
@@ -27,7 +34,10 @@ const TodoSlice = createSlice({
             state.addTodo = action.payload ;
         },
         getUserID : (state,action)=>{
-            state.addUserId = state.payload;
+            state.addUserId = action.payload;
+        },
+        IsAddTask:(state)=>{
+            state.addTask = !state.addTask;
         }
     },
     extraReducers:(builder)=>{
@@ -42,12 +52,15 @@ const TodoSlice = createSlice({
             state.error = action.error.message;
             state.loading = false;
         }); 
+        builder.addCase(axiosAddTask.fulfilled,(state)=>{
+            state.addTask = false;
+        });
     }
 });
 
 
 
 export default TodoSlice.reducer;
-export {axiosGetTodo};
-export const {getTodo,getUserID} = TodoSlice.actions;
+export {axiosGetTodo,axiosAddTask};
+export const {getTodo,getUserID,IsAddTask} = TodoSlice.actions;
 
