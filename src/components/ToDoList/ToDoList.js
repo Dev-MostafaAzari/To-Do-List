@@ -118,7 +118,7 @@ const DoList = () => {
                         <h1>Add New Task</h1>
                         <form className="AddTaskInput">
                             <input type="text"  onChange={(e)=>{dispatch(getTodo(e.target.value))}} placeholder="Task Name" />   {/* niazi nabood ke value in ahro barabar ba state redux gozasht */}
-                            <input type="number"  onChange={(e)=>{dispatch(getUserID(+e.target.value))}} placeholder="UserID" />
+                            <input type="number"  onChange={(e)=>{dispatch(getUserID(+e.target.value))}} placeholder="UserID" /> {/* + gozashtam ke integer bede value ro */}
                             <button onClick={SubmitTaskHandle} type="button">Add Task</button>
                         </form>
                     </motion.div>
