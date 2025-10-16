@@ -78,7 +78,7 @@ const DoList = () => {
     };
 
     const SubmitTaskHandle = ()=>{
-        dispatch(axiosAddTask({addUserId,addTodo,completed}));
+        dispatch(axiosAddTask({addUserId,addTodo,completed})); //maghadir ro be soorat taki va sakhel object gozashtim
     }
 
     return (
@@ -110,14 +110,14 @@ const DoList = () => {
                 <div className="buttons">
                     <button onClick={HandleAddTask}>Add Task</button>
                 </div>
-                <motion.div variants={AddTaskVariants} animate={addTask ? "IsTrue" : "IsFalse"} initial="initial" transition={{duration:0.3}} className="AddTaskWrapper">
+                <motion.div variants={AddTaskVariants} animate={addTask ? "IsTrue" : "IsFalse"} initial="initial" transition={{duration:0.3}} className="AddTaskWrapper">  {/* dar inja addTask state dakhel redux hast */}
                     <motion.div variants={AddTaskVariants} className="AddTask">
                         <div className="AddTaskCloseBtn">
                             <button onClick={HandleAddTask}><FontAwesomeIcon icon={faClose} /></button>
                         </div>
                         <h1>Add New Task</h1>
                         <form className="AddTaskInput">
-                            <input type="text"  onChange={(e)=>{dispatch(getTodo(e.target.value))}} placeholder="Task Name" />
+                            <input type="text"  onChange={(e)=>{dispatch(getTodo(e.target.value))}} placeholder="Task Name" />   {/* niazi nabood ke value in ahro barabar ba state redux gozasht */}
                             <input type="number"  onChange={(e)=>{dispatch(getUserID(+e.target.value))}} placeholder="UserID" />
                             <button onClick={SubmitTaskHandle} type="button">Add Task</button>
                         </form>
