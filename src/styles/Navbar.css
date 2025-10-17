@@ -27,3 +27,38 @@
     max-width: 30px;
 
 }
+@media (max-width:738px){
+    .NavbarWrapper
+    {
+        flex-direction: row !important;
+        justify-content: end !important;
+        gap:10px !important;
+        padding-right: 20px;
+    }
+    .NavbarWrapper h1 
+    {
+        letter-spacing: normal !important;
+        font-size: 20px !important;
+    }
+    .Social
+    {
+        gap: 5px !important;
+    }
+    .Social img 
+    {
+        width:20px !important;
+    }
+}
+@media (max-width:1280px)
+{
+    .NavbarWrapper
+    {
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+    .NavbarWrapper h1 
+    {
+        letter-spacing: 3px;
+        font-size: 30px;
+    }
+}
