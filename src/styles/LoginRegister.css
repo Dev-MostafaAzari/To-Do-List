@@ -11,6 +11,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: scroll;
+    scrollbar-width: none;
 }
 .LoginDiv
 {
@@ -129,4 +131,36 @@
     border:none;
     border-radius: 15px;
     cursor: pointer;
+}
+
+@media (max-width:738px)
+{
+    .FormsWrapper
+    {
+        width: 100% !important;
+    }
+    .FormsWrapper input 
+    {
+        width: 300px !important;
+        padding:15px !important;
+    }
+    .FormsWrapper button 
+    {
+        width: 150px !important;
+    }
+    .FormsWrapper h1
+    {
+        margin-bottom: 10px !important;
+        font-size: 45px !important;
+    }
+    .RegisterCheck
+    {
+        width: 100% !important;
+        justify-content: center !important;
+    }
+    .RegisterCheck input 
+    {
+        padding: 0 !important;
+        width: 25px !important;
+    }
 }
