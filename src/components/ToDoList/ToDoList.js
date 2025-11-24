@@ -4,8 +4,7 @@ import "../../styles/ToDoList.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClose, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { useSelector,useDispatch } from 'react-redux';
-import { axiosGetTodo,axiosAddTask } from '../../features/TodoList/todolistSlice';
-import { getTodo,getUserID,IsAddTask} from '../../features/TodoList/todolistSlice';
+import { AddTodo,AddTask } from '../../features/TodoManual/todoManualSlice';
 
 const ToDoListVariants = {
     initial:{
@@ -67,19 +66,23 @@ const LoadingAnimationVariants = {
 const DoList = () => {
 
     const dispatch = useDispatch();
-    const {loading,todo,addTodo,completed,addUserId,error,addTask} = useSelector(state=>state.todoList);
+    const {loading , addTask,TodoList} = useSelector(state=> state.manualTodo);
+    const [todo,setTodo]=useState({
+        Title:"",
+        DeadLine:"",
+        Status:""
+    });
 
-    useEffect(()=>{
-        dispatch(axiosGetTodo());
-    },[]);
-
-    const HandleAddTask = ()=>{
-        dispatch(IsAddTask());
+    const AddTaskHandle = () => { 
+        dispatch(AddTask());
     };
 
-    const SubmitTaskHandle = ()=>{
-        dispatch(axiosAddTask({addUserId,addTodo,completed})); //maghadir ro be soorat taki va sakhel object gozashtim
-    }
+    const AddTodoHandle = (todo,e) =>{
+        e.preventDefault();
+        dispatch(AddTodo(todo));
+        setTodo({...todo , Title:"" , DeadLine:"", Status:"" });
+        AddTaskHandle();
+    };
 
     return (
         <div className="ToDoList">
@@ -91,35 +94,34 @@ const DoList = () => {
                     {loading ? <motion.div variants={LoadingAnimationVariants} initial="OuterRingInit" animate="OuterRingAnim" className="LoadingAnimation"><motion.div variants={LoadingAnimationVariants} initial="InnerRingInit" animate="InnerRingAnim" className="LoadingAnimation2"></motion.div></motion.div> : <table>
                         <thead>
                             <tr>
-                                <th>No.</th>
-                                <th>ToDo Item</th>
+                                <th>Title</th>
+                                <th>DeadLine</th>
                                 <th>Status</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {todo?.todos?.map((element) =>         /* bayad be in shek map mikardim chon dar todo yek object be name todos darim */
-                                <tr key={element.id}>
-                                    <td>{element.id}</td>
-                                    <td>{element.todo}</td>
-                                    <td><input type="checkbox" /></td>
-                                </tr>
-                            )}
+                            {TodoList.map((e)=>(<tr>
+                                <td>{e.Title}</td>
+                                <td>{e.DeadLine}Days</td>
+                                <td>{e.Status}</td>
+                            </tr>))}
                         </tbody>
                     </table>}
                 </div>
                 <div className="buttons">
-                    <button onClick={HandleAddTask}>Add Task</button>
+                    <button onClick={AddTaskHandle}>Add Task</button>
                 </div>
                 <motion.div variants={AddTaskVariants} animate={addTask ? "IsTrue" : "IsFalse"} initial="initial" transition={{duration:0.3}} className="AddTaskWrapper">  {/* dar inja addTask state dakhel redux hast */}
                     <motion.div variants={AddTaskVariants} className="AddTask">
                         <div className="AddTaskCloseBtn">
-                            <button onClick={HandleAddTask}><FontAwesomeIcon icon={faClose} /></button>
+                            <button onClick={AddTaskHandle}><FontAwesomeIcon icon={faClose} /></button>
                         </div>
                         <h1>Add New Task</h1>
-                        <form className="AddTaskInput">
-                            <input type="text"  onChange={(e)=>{dispatch(getTodo(e.target.value))}} placeholder="Task Name" />   {/* niazi nabood ke value in ahro barabar ba state redux gozasht */}
-                            <input type="number"  onChange={(e)=>{dispatch(getUserID(+e.target.value))}} placeholder="UserID" /> {/* + gozashtam ke integer bede value ro */}
-                            <button onClick={SubmitTaskHandle} type="button">Add Task</button>
+                        <form onSubmit={(e)=>AddTodoHandle(todo,e)} className="AddTaskInput">
+                            <input type="text" value={todo.Title}  onChange={(e) => setTodo({...todo , Title:e.target.value})} placeholder="Task Name" />   
+                            <input type="number" value={todo.DeadLine} onChange={(e) => setTodo({...todo , DeadLine:e.target.value})} placeholder="DeadLine" />
+                            <input type="text" value={todo.Status}  onChange={(e) => setTodo({...todo , Status:e.target.value})} placeholder="status" />
+                            <button type="submit">Add Task</button>
                         </form>
                     </motion.div>
                 </motion.div>
