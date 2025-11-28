@@ -131,7 +131,7 @@
     width: 100%;
     justify-content: center;
     align-items: center;
-    gap: 30px;
+    gap: 20px;
 }
 .AddTaskInput input 
 {
@@ -142,7 +142,7 @@
 }
 .AddTaskInput button 
 {
-    padding: 10px;
+    padding: 20px;
     font-size: 20px;
     border-radius: 15px;
     cursor: pointer;
@@ -173,6 +173,21 @@
     width: 20px;
     height: 20px;
     border-radius: 50%;
+}
+.TodoOprations
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 15px;
+}
+.EditTodo
+{
+    font-size: 30px;
+    background-color: transparent;
+    color:orange;
+    border:none;
+    cursor: pointer;
 }
 
 @media (max-width:738px)

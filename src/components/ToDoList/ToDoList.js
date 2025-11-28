@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { motion } from "framer-motion";
 import "../../styles/ToDoList.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faClose, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faClose, faTrash, faUserEdit, faUserMinus } from '@fortawesome/free-solid-svg-icons';
 import { useSelector,useDispatch } from 'react-redux';
 import { AddTodo,AddTask } from '../../features/TodoManual/todoManualSlice';
 
@@ -97,6 +97,7 @@ const DoList = () => {
                                 <th>Title</th>
                                 <th>DeadLine</th>
                                 <th>Status</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -104,6 +105,7 @@ const DoList = () => {
                                 <td>{e.Title}</td>
                                 <td>{e.DeadLine}Days</td>
                                 <td>{e.Status}</td>
+                                <td><div className="TodoOprations"><button className="EditTodo"><FontAwesomeIcon icon={faUserEdit}/></button><button className="EditTodo"><FontAwesomeIcon icon={faUserMinus}/></button></div></td>
                             </tr>))}
                         </tbody>
                     </table>}
@@ -118,9 +120,9 @@ const DoList = () => {
                         </div>
                         <h1>Add New Task</h1>
                         <form onSubmit={(e)=>AddTodoHandle(todo,e)} className="AddTaskInput">
-                            <input type="text" value={todo.Title}  onChange={(e) => setTodo({...todo , Title:e.target.value})} placeholder="Task Name" />   
-                            <input type="number" value={todo.DeadLine} onChange={(e) => setTodo({...todo , DeadLine:e.target.value})} placeholder="DeadLine" />
-                            <input type="text" value={todo.Status}  onChange={(e) => setTodo({...todo , Status:e.target.value})} placeholder="status" />
+                            <input type="text" value={todo.Title} required onChange={(e) => setTodo({...todo , Title:e.target.value})} placeholder="Task Name" />   
+                            <input type="number" value={todo.DeadLine} required onChange={(e) => setTodo({...todo , DeadLine:e.target.value})} placeholder="DeadLine" />
+                            <input type="text" value={todo.Status} required onChange={(e) => setTodo({...todo , Status:e.target.value})} placeholder="status" />
                             <button type="submit">Add Task</button>
                         </form>
                     </motion.div>
