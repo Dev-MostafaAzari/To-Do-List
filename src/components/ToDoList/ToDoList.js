@@ -4,7 +4,7 @@ import "../../styles/ToDoList.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClose, faTrash, faUserEdit, faUserMinus } from '@fortawesome/free-solid-svg-icons';
 import { useSelector,useDispatch } from 'react-redux';
-import { AddTodo,AddTask } from '../../features/TodoManual/todoManualSlice';
+import { AddTodo,AddTask,DeleteTodo} from '../../features/TodoManual/todoManualSlice';
 
 const ToDoListVariants = {
     initial:{
@@ -70,7 +70,8 @@ const DoList = () => {
     const [todo,setTodo]=useState({
         Title:"",
         DeadLine:"",
-        Status:""
+        Status:"",
+        id:"",
     });
 
     const AddTaskHandle = () => { 
@@ -83,6 +84,10 @@ const DoList = () => {
         setTodo({...todo , Title:"" , DeadLine:"", Status:"" });
         AddTaskHandle();
     };
+
+    const DeleteItem = (id) =>{
+        dispatch(DeleteTodo(id));   //id hammon id elemnt dar array hast ke be in tabe dar redux pas midim
+    }
 
     return (
         <div className="ToDoList">
@@ -105,7 +110,7 @@ const DoList = () => {
                                 <td>{e.Title}</td>
                                 <td>{e.DeadLine}Days</td>
                                 <td>{e.Status}</td>
-                                <td><div className="TodoOprations"><button className="EditTodo"><FontAwesomeIcon icon={faUserEdit}/></button><button className="EditTodo"><FontAwesomeIcon icon={faUserMinus}/></button></div></td>
+                                <td><div className="TodoOprations"><button className="EditTodo"><FontAwesomeIcon icon={faUserEdit}/></button><button onClick={()=>DeleteItem(e.id)} className="EditTodo"><FontAwesomeIcon icon={faUserMinus}/></button></div></td>
                             </tr>))}
                         </tbody>
                     </table>}
@@ -120,7 +125,7 @@ const DoList = () => {
                         </div>
                         <h1>Add New Task</h1>
                         <form onSubmit={(e)=>AddTodoHandle(todo,e)} className="AddTaskInput">
-                            <input type="text" value={todo.Title} required onChange={(e) => setTodo({...todo , Title:e.target.value})} placeholder="Task Name" />   
+                            <input type="text" value={todo.Title} required onChange={(e) => setTodo({...todo , Title:e.target.value , id:Math.floor(Math.random()*10000000)})} placeholder="Task Name" />   {/* hamzaman yek id random ham midim */}
                             <input type="number" value={todo.DeadLine} required onChange={(e) => setTodo({...todo , DeadLine:e.target.value})} placeholder="DeadLine" />
                             <input type="text" value={todo.Status} required onChange={(e) => setTodo({...todo , Status:e.target.value})} placeholder="status" />
                             <button type="submit">Add Task</button>
