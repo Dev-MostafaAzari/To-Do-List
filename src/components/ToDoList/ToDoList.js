@@ -66,7 +66,7 @@ const LoadingAnimationVariants = {
 const DoList = () => {
 
     const dispatch = useDispatch();
-    const {loading , addTask,TodoList,isEdit} = useSelector(state=> state.manualTodo);
+    const {loading , addTask,TodoList} = useSelector(state=> state.manualTodo);
     const [todo,setTodo]=useState({
         Title:"",
         DeadLine:"",
@@ -93,6 +93,7 @@ const DoList = () => {
 
     const DeleteItem = (id) =>{
         dispatch(DeleteTodo(id));   //id hammon id elemnt dar array hast ke be in tabe dar redux pas midim
+        dispatch(CancelEdit(id));
     }
 
     const handleChangeEdit=(data)=>{
@@ -117,11 +118,11 @@ const DoList = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {TodoList.map((e)=>(<tr>
-                                <td>{isEdit ? <input className="EditInput" type="text"  onChange={(e)=>setEdit({...edit, Title:e.target.value})} placeholder={e.Title} /> : e.Title}</td>
-                                <td>{isEdit ? <input className="EditInput" type="number"  onChange={(e)=>setEdit({...edit, DeadLine:e.target.value})} placeholder={e.DeadLine} /> : e.DeadLine}</td>
-                                <td>{isEdit ? <input className="EditInput" type="text"  onChange={(e)=>setEdit({...edit, Status:e.target.value})} placeholder={e.Status} /> : e.Status}</td>
-                                <td><div className="TodoOprations">{isEdit ?<><button className="ChangeEdit" onClick={()=>handleChangeEdit({id:e.id,data:edit})}><FontAwesomeIcon icon={faCheck}/></button><button className="CancelEdit" onClick={()=>{dispatch(CancelEdit())}}><FontAwesomeIcon icon={faRemove}/></button></> : <><button className="EditTodo" onClick={()=>{dispatch(CancelEdit())}}><FontAwesomeIcon icon={faUserEdit}/></button><button onClick={()=>DeleteItem(e.id)} className="EditTodo"><FontAwesomeIcon icon={faUserMinus}/></button></>}</div></td>
+                            {TodoList.map((e)=>(<tr key={e.id}>
+                                <td>{e.isEdit ? <input className="EditInput" type="text"  onChange={(e)=>setEdit({...edit, Title:e.target.value})} placeholder={e.Title} /> : e.Title}</td>
+                                <td>{e.isEdit ? <input className="EditInput" type="number"  onChange={(e)=>setEdit({...edit, DeadLine:e.target.value})} placeholder={e.DeadLine} /> : e.DeadLine}</td>
+                                <td>{e.isEdit ? <input className="EditInput" type="text"  onChange={(e)=>setEdit({...edit, Status:e.target.value})} placeholder={e.Status} /> : e.Status}</td>
+                                <td><div className="TodoOprations">{e.isEdit ?<><button className="ChangeEdit" onClick={()=>handleChangeEdit({id:e.id,data:edit})}><FontAwesomeIcon icon={faCheck}/></button><button className="CancelEdit" onClick={()=>{dispatch(CancelEdit(e.id))}}><FontAwesomeIcon icon={faRemove}/></button></> : <><button className="EditTodo" onClick={()=>{dispatch(CancelEdit(e.id))}}><FontAwesomeIcon icon={faUserEdit}/></button><button onClick={()=>DeleteItem(e.id)} className="EditTodo"><FontAwesomeIcon icon={faUserMinus}/></button></>}</div></td>
                             </tr>))}
                         </tbody>
                     </table>}
