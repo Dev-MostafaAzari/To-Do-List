@@ -95,6 +95,11 @@ const DoList = () => {
         dispatch(DeleteTodo(id));   //id hammon id elemnt dar array hast ke be in tabe dar redux pas midim
     }
 
+    const handleChangeEdit=(data)=>{
+        dispatch(ChangeEdit(data));
+        setEdit({...edit , Title:"",DeadLine:"",Status:""});   //state ro khali mikonim ta darsoorat edit bdoon ezafe shodan new value dar input ha "" vared shavad
+    }
+
     return (
         <div className="ToDoList">
             <motion.div variants={ToDoListVariants} initial="initial" animate="animate" className="ToDoListWrapper">
@@ -116,7 +121,7 @@ const DoList = () => {
                                 <td>{isEdit ? <input className="EditInput" type="text"  onChange={(e)=>setEdit({...edit, Title:e.target.value})} placeholder={e.Title} /> : e.Title}</td>
                                 <td>{isEdit ? <input className="EditInput" type="number"  onChange={(e)=>setEdit({...edit, DeadLine:e.target.value})} placeholder={e.DeadLine} /> : e.DeadLine}</td>
                                 <td>{isEdit ? <input className="EditInput" type="text"  onChange={(e)=>setEdit({...edit, Status:e.target.value})} placeholder={e.Status} /> : e.Status}</td>
-                                <td><div className="TodoOprations">{isEdit ?<><button className="ChangeEdit" onClick={()=>{dispatch(ChangeEdit({id:e.id,data:edit}))}}><FontAwesomeIcon icon={faCheck}/></button><button className="CancelEdit" onClick={()=>{dispatch(CancelEdit())}}><FontAwesomeIcon icon={faRemove}/></button></> : <><button className="EditTodo" onClick={()=>{dispatch(CancelEdit())}}><FontAwesomeIcon icon={faUserEdit}/></button><button onClick={()=>DeleteItem(e.id)} className="EditTodo"><FontAwesomeIcon icon={faUserMinus}/></button></>}</div></td>
+                                <td><div className="TodoOprations">{isEdit ?<><button className="ChangeEdit" onClick={()=>handleChangeEdit({id:e.id,data:edit})}><FontAwesomeIcon icon={faCheck}/></button><button className="CancelEdit" onClick={()=>{dispatch(CancelEdit())}}><FontAwesomeIcon icon={faRemove}/></button></> : <><button className="EditTodo" onClick={()=>{dispatch(CancelEdit())}}><FontAwesomeIcon icon={faUserEdit}/></button><button onClick={()=>DeleteItem(e.id)} className="EditTodo"><FontAwesomeIcon icon={faUserMinus}/></button></>}</div></td>
                             </tr>))}
                         </tbody>
                     </table>}
