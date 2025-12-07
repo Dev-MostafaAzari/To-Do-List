@@ -189,7 +189,25 @@
     border:none;
     cursor: pointer;
 }
-.EditInput
+.EditInputTitle
+{
+    background: transparent;
+    color:gray;
+    border:1px solid lightgray;
+    border-radius: 5px;
+    padding: 3px;
+    outline: none;
+}
+.EditInputDeadLine
+{
+    background: transparent;
+    color:gray;
+    border:1px solid lightgray;
+    border-radius: 5px;
+    padding: 3px;
+    outline: none;
+}
+.EditInputStatus
 {
     background: transparent;
     color:gray;
@@ -256,6 +274,7 @@
     {
         width: 100% !important;
         height: 300px !important;
+        padding: 10px !important;
     }
     .AddTask h1 
     {
@@ -268,8 +287,15 @@
     .AddTaskInput input 
     {
         width: 300px !important;
-        padding: 15px !important;
+        padding: 5px !important;
         font-size: 15px !important;
+        border-radius: 10px !important;
+    }
+    .AddTaskInput button 
+    {
+        padding: 10px;
+        font-size: 15px;
+        border-radius: 10px;
     }
     .LoadingAnimation
     {
@@ -277,6 +303,37 @@
         left: 45% !important;
         transform: translate(-50%,-50%) !important;
 
+    }
+    .TodoOprations
+    {
+        gap: 10px !important;
+    }
+    .EditTodo
+    {
+        font-size: 20px !important;
+    }
+    .EditInputTitle
+    {
+        padding: 3px !important;
+        width: 70px !important;
+    }
+    .EditInputDeadLine
+    {
+        padding: 3px !important;
+        width: 30px !important;
+    }
+    .EditInputStatus
+    {
+        padding: 3px !important;
+        width: 40px !important;
+    }
+    .ChangeEdit
+    {
+        font-size: 20px !important;
+    }
+    .CancelEdit
+    {
+        font-size: 20px !important;
     }
 }
 @media (max-width:1280px)
