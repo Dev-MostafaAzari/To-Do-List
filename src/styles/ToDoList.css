@@ -31,6 +31,9 @@
 {
     width: 100%;
     height: 700px;
+    overflow: scroll;
+    scrollbar-width:none;
+    scroll-snap-type: mandatory;
 }
 .DoLists table
 {
