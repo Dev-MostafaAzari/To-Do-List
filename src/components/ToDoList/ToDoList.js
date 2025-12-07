@@ -34,7 +34,7 @@ const AddTaskVariants = {
         opacity:0,
         dispaly:"none",
     },
-}
+};
 
 const LoadingAnimationVariants = {
     OuterRingInit:{
@@ -61,7 +61,7 @@ const LoadingAnimationVariants = {
             repeat:Infinity,
         }
     },
-}
+};
 
 const DoList = () => {
 
@@ -94,12 +94,12 @@ const DoList = () => {
     const DeleteItem = (id) =>{
         dispatch(DeleteTodo(id));   //id hammon id elemnt dar array hast ke be in tabe dar redux pas midim
         dispatch(CancelEdit(id));
-    }
+    };
 
     const handleChangeEdit=(data)=>{
         dispatch(ChangeEdit(data));
         //setEdit({...edit , Title:"",DeadLine:"",Status:""});   //state ro khali mikonim ta darsoorat edit bdoon ezafe shodan new value dar input ha "" vared shavad
-    }
+    };
 
     return (
         <div className="ToDoList">
@@ -147,7 +147,7 @@ const DoList = () => {
             </motion.div>
         </div>
     )
-}
+};
 
 
 export default DoList;

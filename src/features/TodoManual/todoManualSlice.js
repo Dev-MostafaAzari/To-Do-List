@@ -29,7 +29,7 @@ const ManualSlice = createSlice({
             const {id,data}= action.payload;  //dar inja dota meghdar dar payload darim ke distruct kardim
             state.TodoList = state.TodoList.map(item => item.id === id ? {...item,...data} : item);   //item ke id onn ba id vorodi barabar base ro be data vorodi update mikonim
             state.TodoList = state.TodoList.map(item=>item.id === id ? {...item , isEdit: !item.isEdit} :item);
-        }
+        },
     },
 });
 
