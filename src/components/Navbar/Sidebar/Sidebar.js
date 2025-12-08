@@ -23,7 +23,7 @@ const Sidebar = () => {
                 duration: 0.5,
             }
         },
-    }
+    };
 
     const ListVariants = {   //variant baray list ha
         close: {
@@ -43,7 +43,7 @@ const Sidebar = () => {
             },
         },
 
-    }
+    };
 
 
     return (
@@ -60,6 +60,6 @@ const Sidebar = () => {
 
         </div>
     )
-}
+};
 
 export default Sidebar;

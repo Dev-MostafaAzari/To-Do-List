@@ -17,7 +17,7 @@ const SlideTextVariant =
         }
     },
 
-}
+};
 
 const HomeItemsVariants = {
     initial:{
@@ -32,7 +32,7 @@ const HomeItemsVariants = {
             stiffness:100,
         }
     },
-}
+};
 
 const HomePage = () => {
     return (
@@ -51,6 +51,6 @@ const HomePage = () => {
             </motion.div>
         </div>
     )
-}
+};
 
 export default HomePage;

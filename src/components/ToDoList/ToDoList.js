@@ -2,10 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { motion } from "framer-motion";
 import "../../styles/ToDoList.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faClose, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faCheck, faClose, faRemove, faTrash, faUserEdit, faUserMinus } from '@fortawesome/free-solid-svg-icons';
 import { useSelector,useDispatch } from 'react-redux';
-import { axiosGetTodo,axiosAddTask } from '../../features/TodoList/todolistSlice';
-import { getTodo,getUserID,IsAddTask} from '../../features/TodoList/todolistSlice';
+import { AddTodo,AddTask,DeleteTodo,CancelEdit,ChangeEdit} from '../../features/TodoManual/todoManualSlice';
 
 const ToDoListVariants = {
     initial:{
@@ -35,7 +34,7 @@ const AddTaskVariants = {
         opacity:0,
         dispaly:"none",
     },
-}
+};
 
 const LoadingAnimationVariants = {
     OuterRingInit:{
@@ -62,24 +61,45 @@ const LoadingAnimationVariants = {
             repeat:Infinity,
         }
     },
-}
+};
 
 const DoList = () => {
 
     const dispatch = useDispatch();
-    const {loading,todo,addTodo,completed,addUserId,error,addTask} = useSelector(state=>state.todoList);
+    const {loading , addTask,TodoList} = useSelector(state=> state.manualTodo);
+    const [todo,setTodo]=useState({
+        Title:"",
+        DeadLine:"",
+        Status:"",
+        id:"",
+    });
 
-    useEffect(()=>{
-        dispatch(axiosGetTodo());
-    },[]);
+    const [edit,setEdit]=useState([{
+        Title:"",
+        DeadLine:"",
+        Status:"",
+    }]);
 
-    const HandleAddTask = ()=>{
-        dispatch(IsAddTask());
+    const AddTaskHandle = () => { 
+        dispatch(AddTask());
     };
 
-    const SubmitTaskHandle = ()=>{
-        dispatch(axiosAddTask({addUserId,addTodo,completed})); //maghadir ro be soorat taki va sakhel object gozashtim
-    }
+    const AddTodoHandle = (todo,e) =>{
+        e.preventDefault();
+        dispatch(AddTodo(todo));
+        setTodo({...todo , Title:"" , DeadLine:"", Status:"" });
+        AddTaskHandle();
+    };
+
+    const DeleteItem = (id) =>{
+        dispatch(DeleteTodo(id));   //id hammon id elemnt dar array hast ke be in tabe dar redux pas midim
+        dispatch(CancelEdit(id));
+    };
+
+    const handleChangeEdit=(data)=>{
+        dispatch(ChangeEdit(data));
+        //setEdit({...edit , Title:"",DeadLine:"",Status:""});   //state ro khali mikonim ta darsoorat edit bdoon ezafe shodan new value dar input ha "" vared shavad
+    };
 
     return (
         <div className="ToDoList">
@@ -91,42 +111,43 @@ const DoList = () => {
                     {loading ? <motion.div variants={LoadingAnimationVariants} initial="OuterRingInit" animate="OuterRingAnim" className="LoadingAnimation"><motion.div variants={LoadingAnimationVariants} initial="InnerRingInit" animate="InnerRingAnim" className="LoadingAnimation2"></motion.div></motion.div> : <table>
                         <thead>
                             <tr>
-                                <th>No.</th>
-                                <th>ToDo Item</th>
+                                <th>Title</th>
+                                <th>DeadLine</th>
                                 <th>Status</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
-                            {todo?.todos?.map((element) =>         /* bayad be in shek map mikardim chon dar todo yek object be name todos darim */
-                                <tr key={element.id}>
-                                    <td>{element.id}</td>
-                                    <td>{element.todo}</td>
-                                    <td><input type="checkbox" /></td>
-                                </tr>
-                            )}
+                            {TodoList.map((e)=>(<tr key={e.id}>
+                                <td>{e.isEdit ? <input className="EditInputTitle" type="text"  onChange={(e)=>setEdit({...edit, Title:e.target.value})} placeholder={e.Title} /> : e.Title}</td>
+                                <td>{e.isEdit ? <input className="EditInputDeadLine" type="number"  onChange={(e)=>setEdit({...edit, DeadLine:e.target.value})} placeholder={e.DeadLine} /> : e.DeadLine}</td>
+                                <td>{e.isEdit ? <input className="EditInputStatus" type="text"  onChange={(e)=>setEdit({...edit, Status:e.target.value})} placeholder={e.Status} /> : e.Status}</td>
+                                <td><div className="TodoOprations">{e.isEdit ?<><button className="ChangeEdit" onClick={()=>handleChangeEdit({id:e.id,data:edit})}><FontAwesomeIcon icon={faCheck}/></button><button className="CancelEdit" onClick={()=>{dispatch(CancelEdit(e.id))}}><FontAwesomeIcon icon={faRemove}/></button></> : <><button className="EditTodo" onClick={()=>{dispatch(CancelEdit(e.id))}}><FontAwesomeIcon icon={faUserEdit}/></button><button onClick={()=>DeleteItem(e.id)} className="EditTodo"><FontAwesomeIcon icon={faUserMinus}/></button></>}</div></td>
+                            </tr>))}
                         </tbody>
                     </table>}
                 </div>
                 <div className="buttons">
-                    <button onClick={HandleAddTask}>Add Task</button>
+                    <button onClick={AddTaskHandle}>Add Task</button>
                 </div>
                 <motion.div variants={AddTaskVariants} animate={addTask ? "IsTrue" : "IsFalse"} initial="initial" transition={{duration:0.3}} className="AddTaskWrapper">  {/* dar inja addTask state dakhel redux hast */}
                     <motion.div variants={AddTaskVariants} className="AddTask">
                         <div className="AddTaskCloseBtn">
-                            <button onClick={HandleAddTask}><FontAwesomeIcon icon={faClose} /></button>
+                            <button onClick={AddTaskHandle}><FontAwesomeIcon icon={faClose} /></button>
                         </div>
                         <h1>Add New Task</h1>
-                        <form className="AddTaskInput">
-                            <input type="text"  onChange={(e)=>{dispatch(getTodo(e.target.value))}} placeholder="Task Name" />   {/* niazi nabood ke value in ahro barabar ba state redux gozasht */}
-                            <input type="number"  onChange={(e)=>{dispatch(getUserID(+e.target.value))}} placeholder="UserID" /> {/* + gozashtam ke integer bede value ro */}
-                            <button onClick={SubmitTaskHandle} type="button">Add Task</button>
+                        <form onSubmit={(e)=>AddTodoHandle(todo,e)} className="AddTaskInput">
+                            <input type="text" value={todo.Title} required onChange={(e) => setTodo({...todo , Title:e.target.value , id:Math.floor(Math.random()*10000000)})} placeholder="Task Name" />   {/* hamzaman yek id random ham midim */}
+                            <input type="number" value={todo.DeadLine} required onChange={(e) => setTodo({...todo , DeadLine:e.target.value})} placeholder="DeadLine" />
+                            <input type="text" value={todo.Status} required onChange={(e) => setTodo({...todo , Status:e.target.value})} placeholder="status" />
+                            <button type="submit">Add Task</button>
                         </form>
                     </motion.div>
                 </motion.div>
             </motion.div>
         </div>
     )
-}
+};
 
 
 export default DoList;

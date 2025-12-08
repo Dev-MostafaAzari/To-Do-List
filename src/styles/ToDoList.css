@@ -30,6 +30,10 @@
 .DoLists
 {
     width: 100%;
+    height: 700px;
+    overflow: scroll;
+    scrollbar-width:none;
+    scroll-snap-type: mandatory;
 }
 .DoLists table
 {
@@ -130,7 +134,7 @@
     width: 100%;
     justify-content: center;
     align-items: center;
-    gap: 30px;
+    gap: 20px;
 }
 .AddTaskInput input 
 {
@@ -141,7 +145,7 @@
 }
 .AddTaskInput button 
 {
-    padding: 10px;
+    padding: 20px;
     font-size: 20px;
     border-radius: 15px;
     cursor: pointer;
@@ -172,6 +176,64 @@
     width: 20px;
     height: 20px;
     border-radius: 50%;
+}
+.TodoOprations
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 15px;
+}
+.EditTodo
+{
+    font-size: 30px;
+    background-color: transparent;
+    color:orange;
+    border:none;
+    cursor: pointer;
+}
+.EditInputTitle
+{
+    background: transparent;
+    color:gray;
+    border:1px solid lightgray;
+    border-radius: 5px;
+    padding: 3px;
+    outline: none;
+}
+.EditInputDeadLine
+{
+    background: transparent;
+    color:gray;
+    border:1px solid lightgray;
+    border-radius: 5px;
+    padding: 3px;
+    outline: none;
+}
+.EditInputStatus
+{
+    background: transparent;
+    color:gray;
+    border:1px solid lightgray;
+    border-radius: 5px;
+    padding: 3px;
+    outline: none;
+}
+.ChangeEdit
+{
+    cursor: pointer;
+    font-size: 25px;
+    background-color: transparent;
+    border: none;
+    color:green;
+}
+.CancelEdit
+{
+    cursor: pointer;
+    font-size: 25px;
+    background-color: transparent;
+    border: none;
+    color:red;
 }
 
 @media (max-width:738px)
@@ -215,6 +277,7 @@
     {
         width: 100% !important;
         height: 300px !important;
+        padding: 10px !important;
     }
     .AddTask h1 
     {
@@ -227,8 +290,15 @@
     .AddTaskInput input 
     {
         width: 300px !important;
-        padding: 15px !important;
+        padding: 5px !important;
         font-size: 15px !important;
+        border-radius: 10px !important;
+    }
+    .AddTaskInput button 
+    {
+        padding: 10px;
+        font-size: 15px;
+        border-radius: 10px;
     }
     .LoadingAnimation
     {
@@ -236,6 +306,37 @@
         left: 45% !important;
         transform: translate(-50%,-50%) !important;
 
+    }
+    .TodoOprations
+    {
+        gap: 10px !important;
+    }
+    .EditTodo
+    {
+        font-size: 20px !important;
+    }
+    .EditInputTitle
+    {
+        padding: 3px !important;
+        width: 70px !important;
+    }
+    .EditInputDeadLine
+    {
+        padding: 3px !important;
+        width: 30px !important;
+    }
+    .EditInputStatus
+    {
+        padding: 3px !important;
+        width: 40px !important;
+    }
+    .ChangeEdit
+    {
+        font-size: 20px !important;
+    }
+    .CancelEdit
+    {
+        font-size: 20px !important;
     }
 }
 @media (max-width:1280px)

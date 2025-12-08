@@ -13,6 +13,6 @@ const ToggleButton = ({ setOpen }) => {
             
         </button>   /* style hay in ha dar css parent yani Sidebar.css hast  */
     )
-}
+};
 
 export default ToggleButton;

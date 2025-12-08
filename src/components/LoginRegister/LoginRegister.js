@@ -40,7 +40,7 @@ const IsLoginVariant = {
         }
     }
 
-}
+};
 
 const IsRegisterVariant = 
 {
@@ -66,49 +66,29 @@ const IsRegisterVariant =
             duration:0.001
         },
     }
-}
+};
 
 
 const LoginRegister = () => {
 
     const {register,handleSubmit,watch,formState:{errors}}=useForm({resolver:yupResolver(registerSchema)});   //form validation
 
-    /* const [logindata , setLogindata] = useState({username:"",password:""});        //state for saving input data */       //****** maghadir comment shode yani az ravesh dige raftam ******/
-    
     const [login,setLogin]=useState(true);
 
     const UserLoginData = useSelector((state)=> state.login);
 
     const dispatch = useDispatch();
 
-
     const RegisterDate = {
         username: watch("username"),
         password : watch("password"),
         email : watch("email"),
-    }
+    };
     
-    /* const LoginInput = (event)=>{        //data ro dar input dar in state mizare
-        switch(event.target.name){
-            case "username":
-                setLogindata({...logindata, username : event.target.value});
-                
-                break;
-            case "password":
-                setLogindata({...logindata, password : event.target.value});
-                
-                break;
-            default:
-                break;        
-        }
-    } */
-
     const HandleLogin = (event)=>{      //dar submit maghadir ro dar state slice mizare va sepas axios ro ejra mikone
         event.preventDefault();
-        /* dispatch(getUsername(logindata.username));
-        dispatch(getPassword(logindata.password)); */
         dispatch(axiosLogin(UserLoginData));       //UserLoginData ke hamoon state dakhel LoginSlice hast ro be vorodi axios midim
-    }
+    };
 
     return (
         <div className="LoginRegisterMain">
@@ -149,6 +129,6 @@ const LoginRegister = () => {
             </motion.div>
         </div>
     )
-}
+};
 
 export default LoginRegister;

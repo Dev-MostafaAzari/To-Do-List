@@ -5,14 +5,14 @@ import axios from "axios";
 const initialState = {
     loading:false,
     error : "",
-}
+};
 
 const baseUrl = "https://fakestoreapi.com";
 
 const axiosRegister = createAsyncThunk("register/axiosRegister",async(userdata)=>{
     const response = await axios.post(`${baseUrl}/auth/login`, userdata);   //vaghti az await estefade mishe error be tor auto mire be rejected
     return response.data;
-})
+});
 
 const RegisterSlice = createSlice({
     name:"register",
@@ -27,7 +27,7 @@ const RegisterSlice = createSlice({
         buider.addCase(axiosRegister.fulfilled,(state)=>{
             state.loading = false;
             state.error = "";
-        })
+        });
         buider.addCase(axiosRegister.rejected,(state,action)=>{
             state.loading = false;
             state.error = action.error.message;
