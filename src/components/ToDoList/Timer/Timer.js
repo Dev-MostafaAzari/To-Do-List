@@ -7,7 +7,7 @@ const TimerVariants = {
         backgroundColor:"Green",
     },
     Half:{
-        backgroundColor:"Lightgreen",
+        backgroundColor:"Lightblue",
     },
     End:{
         backgroundColor:"Red",
@@ -15,7 +15,7 @@ const TimerVariants = {
 }
 
 
-const Timer = ({initialTime})=>{
+const Timer = ({initialTime})=>{   //deadline Props
     const [time,setTime]=useState(initialTime);
     const [isRunning,setIsRunning]=useState(false);
     const [timerColor,setTimerColor]=useState("");
@@ -25,9 +25,9 @@ const Timer = ({initialTime})=>{
         let interval = null;
         if(isRunning && time > 0)
         {
-            interval = setInterval(()=>{
+            interval = setInterval(()=>{       //every 6 sec
                 setTime(prev => prev-=1);
-            },6000)
+            },6000);
             if(Math.trunc(time/initialTime*100)<=100 && Math.trunc(time/initialTime*100)>50)
             {
                 setTimerColor("Full");
