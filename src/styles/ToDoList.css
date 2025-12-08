@@ -235,6 +235,10 @@
     border: none;
     color:red;
 }
+.TimerTD
+{
+    padding: 0px !important;
+}
 
 @media (max-width:738px)
 {
