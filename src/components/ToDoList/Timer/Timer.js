@@ -26,8 +26,8 @@ const Timer = ({initialTime})=>{   //deadline Props
         if(isRunning && time > 0)
         {
             interval = setInterval(()=>{       //every 6 sec
-                setTime(prev => prev-=1);
-            },6000);
+                setTime(prev => prev-=1/3600);
+            },60);
             if(Math.trunc(time/initialTime*100)<=100 && Math.trunc(time/initialTime*100)>50)
             {
                 setTimerColor("Full");
