@@ -4,7 +4,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     loading : false,
     addTask : false,
-    TodoList : [{Title:"Say Hello to the World",DeadLine:"3",Status:"inProgress",id:Math.floor(Math.random()*10000000),isEdit:false}], //bejay inke baray isEdit yek state joda tarif konim onn ro dar inja tarif mikonim
+    TodoList : [{Title:"Say Hello to the World",DeadLine:"4",Status:"inProgress",id:Math.floor(Math.random()*10000000),isEdit:false}], //bejay inke baray isEdit yek state joda tarif konim onn ro dar inja tarif mikonim
                                                                                                                                     
 };
 

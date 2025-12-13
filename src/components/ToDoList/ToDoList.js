@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck, faClose, faRemove, faTrash, faUserEdit, faUserMinus } from '@fortawesome/free-solid-svg-icons';
 import { useSelector,useDispatch } from 'react-redux';
 import { AddTodo,AddTask,DeleteTodo,CancelEdit,ChangeEdit} from '../../features/TodoManual/todoManualSlice';
+import Timer from './Timer/Timer';
 
 const ToDoListVariants = {
     initial:{
@@ -112,7 +113,7 @@ const DoList = () => {
                         <thead>
                             <tr>
                                 <th>Title</th>
-                                <th>DeadLine</th>
+                                <th>Expiry</th>
                                 <th>Status</th>
                                 <th></th>
                             </tr>
@@ -120,7 +121,7 @@ const DoList = () => {
                         <tbody>
                             {TodoList.map((e)=>(<tr key={e.id}>
                                 <td>{e.isEdit ? <input className="EditInputTitle" type="text"  onChange={(e)=>setEdit({...edit, Title:e.target.value})} placeholder={e.Title} /> : e.Title}</td>
-                                <td>{e.isEdit ? <input className="EditInputDeadLine" type="number"  onChange={(e)=>setEdit({...edit, DeadLine:e.target.value})} placeholder={e.DeadLine} /> : e.DeadLine}</td>
+                                <td className="TimerTD">{e.isEdit ? <input className="EditInputDeadLine" type="number"  onChange={(e)=>setEdit({...edit, DeadLine:e.target.value})} placeholder={e.DeadLine} /> : <Timer initialTime={e.DeadLine}/>}</td>
                                 <td>{e.isEdit ? <input className="EditInputStatus" type="text"  onChange={(e)=>setEdit({...edit, Status:e.target.value})} placeholder={e.Status} /> : e.Status}</td>
                                 <td><div className="TodoOprations">{e.isEdit ?<><button className="ChangeEdit" onClick={()=>handleChangeEdit({id:e.id,data:edit})}><FontAwesomeIcon icon={faCheck}/></button><button className="CancelEdit" onClick={()=>{dispatch(CancelEdit(e.id))}}><FontAwesomeIcon icon={faRemove}/></button></> : <><button className="EditTodo" onClick={()=>{dispatch(CancelEdit(e.id))}}><FontAwesomeIcon icon={faUserEdit}/></button><button onClick={()=>DeleteItem(e.id)} className="EditTodo"><FontAwesomeIcon icon={faUserMinus}/></button></>}</div></td>
                             </tr>))}
@@ -138,7 +139,7 @@ const DoList = () => {
                         <h1>Add New Task</h1>
                         <form onSubmit={(e)=>AddTodoHandle(todo,e)} className="AddTaskInput">
                             <input type="text" value={todo.Title} required onChange={(e) => setTodo({...todo , Title:e.target.value , id:Math.floor(Math.random()*10000000)})} placeholder="Task Name" />   {/* hamzaman yek id random ham midim */}
-                            <input type="number" value={todo.DeadLine} required onChange={(e) => setTodo({...todo , DeadLine:e.target.value})} placeholder="DeadLine" />
+                            <input type="number" max={48} min={1} value={todo.DeadLine} required onChange={(e) => setTodo({...todo , DeadLine:e.target.value})} placeholder="FinishTime(hr)" />
                             <input type="text" value={todo.Status} required onChange={(e) => setTodo({...todo , Status:e.target.value})} placeholder="status" />
                             <button type="submit">Add Task</button>
                         </form>
