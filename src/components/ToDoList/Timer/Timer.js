@@ -25,9 +25,9 @@ const Timer = ({initialTime})=>{   //deadline Props
         let interval = null;
         if(isRunning && time > 0)
         {
-            interval = setInterval(()=>{       //every 6 sec
-                setTime(prev => prev-=1/3600);
-            },60);
+            interval = setInterval(()=>{       //every 60 sec
+                setTime(prev => prev-=1/60);
+            },60000);
             if(Math.trunc(time/initialTime*100)<=100 && Math.trunc(time/initialTime*100)>50)
             {
                 setTimerColor("Full");
@@ -58,7 +58,7 @@ const Timer = ({initialTime})=>{   //deadline Props
     return(
         <div className="TimerWrapper">
             <motion.div variants={TimerVariants} initial={{backgroundColor:"green"}}  animate={timerColor}  className="TimerBorder">
-                <span className="Time">{Math.trunc(time/initialTime*100) + "%"}</span>
+                <span className="Time">{Math.trunc(time*60) + "Min"}</span>
             </motion.div>
         </div>
     )

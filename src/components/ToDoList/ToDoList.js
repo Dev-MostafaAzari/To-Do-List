@@ -113,7 +113,7 @@ const DoList = () => {
                         <thead>
                             <tr>
                                 <th>Title</th>
-                                <th>DeadLine</th>
+                                <th>Expiry</th>
                                 <th>Status</th>
                                 <th></th>
                             </tr>
@@ -139,7 +139,7 @@ const DoList = () => {
                         <h1>Add New Task</h1>
                         <form onSubmit={(e)=>AddTodoHandle(todo,e)} className="AddTaskInput">
                             <input type="text" value={todo.Title} required onChange={(e) => setTodo({...todo , Title:e.target.value , id:Math.floor(Math.random()*10000000)})} placeholder="Task Name" />   {/* hamzaman yek id random ham midim */}
-                            <input type="number" value={todo.DeadLine} required onChange={(e) => setTodo({...todo , DeadLine:e.target.value})} placeholder="DeadLine" />
+                            <input type="number" max={48} min={1} value={todo.DeadLine} required onChange={(e) => setTodo({...todo , DeadLine:e.target.value})} placeholder="FinishTime(hr)" />
                             <input type="text" value={todo.Status} required onChange={(e) => setTodo({...todo , Status:e.target.value})} placeholder="status" />
                             <button type="submit">Add Task</button>
                         </form>
