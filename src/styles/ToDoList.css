@@ -239,6 +239,32 @@
 {
     padding: 0px !important;
 }
+.TodoTabs
+{
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    gap: 5px;
+}
+.TodoTabs li 
+{
+   flex:1;
+   display: flex;
+   justify-content: center;
+}
+.TodoTabs li button
+{
+    padding: 15px;
+    width: 100%;
+    border-radius: 15px;
+    background-color: gray;
+    font-size: 20px;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+}
+
+
 
 @media (max-width:738px)
 {

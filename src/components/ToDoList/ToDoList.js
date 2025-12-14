@@ -6,6 +6,7 @@ import { faCheck, faClose, faRemove, faTrash, faUserEdit, faUserMinus } from '@f
 import { useSelector,useDispatch } from 'react-redux';
 import { AddTodo,AddTask,DeleteTodo,CancelEdit,ChangeEdit} from '../../features/TodoManual/todoManualSlice';
 import Timer from './Timer/Timer';
+import Completed from './Completed/Completed';
 
 const ToDoListVariants = {
     initial:{
@@ -37,30 +38,14 @@ const AddTaskVariants = {
     },
 };
 
-const LoadingAnimationVariants = {
-    OuterRingInit:{
-        scale:1,
-        
+const TaskTabsVariants = {
+    IsTrue:{
+        backgroundColor:"Blue",
+        color:"White",
     },
-    OuterRingAnim : {
-        scale:1.5,
-        transition:{
-            type:"mirror",
-            duration:1,
-            repeat:Infinity,
-        }
-    },
-    InnerRingInit:
-    {
-        scale:2,
-    },
-    InnerRingAnim:{
-        scale:0.8,
-        transition:{
-            type:"mirror",
-            duration:1,
-            repeat:Infinity,
-        }
+    IsFalse:{
+        backgroundColor:"Gray",
+        color:"Black",
     },
 };
 
@@ -68,6 +53,7 @@ const DoList = () => {
 
     const dispatch = useDispatch();
     const {loading , addTask,TodoList} = useSelector(state=> state.manualTodo);
+    const [isinTodo,setIsintodo]=useState(true);
     const [todo,setTodo]=useState({
         Title:"",
         DeadLine:"",
@@ -108,8 +94,12 @@ const DoList = () => {
                 <div className="ListHeader">
                     <h1>Your ToDo List</h1>
                 </div>
+                <ul className="TodoTabs">
+                    <li><motion.button variants={TaskTabsVariants} animate={isinTodo ? "IsTrue" : "IsFalse"} className="TodoList" onClick={()=>setIsintodo(true)}>TaskList</motion.button></li>
+                    <li><motion.button variants={TaskTabsVariants} animate={isinTodo ? "IsFalse" : "IsTrue"} className="Completed" onClick={()=>setIsintodo(false)}>Completed</motion.button></li>
+                </ul>
                 <div className="DoLists">   {/* dar inja yek loding dorost kardam ke ta zamanike loading hast elemnt loading ro nshoon bde va bad az daryaft data az api oon ro hide va data ro nshoon bde */}
-                    {loading ? <motion.div variants={LoadingAnimationVariants} initial="OuterRingInit" animate="OuterRingAnim" className="LoadingAnimation"><motion.div variants={LoadingAnimationVariants} initial="InnerRingInit" animate="InnerRingAnim" className="LoadingAnimation2"></motion.div></motion.div> : <table>
+                    {isinTodo ? <table>
                         <thead>
                             <tr>
                                 <th>Title</th>
@@ -126,7 +116,7 @@ const DoList = () => {
                                 <td><div className="TodoOprations">{e.isEdit ?<><button className="ChangeEdit" onClick={()=>handleChangeEdit({id:e.id,data:edit})}><FontAwesomeIcon icon={faCheck}/></button><button className="CancelEdit" onClick={()=>{dispatch(CancelEdit(e.id))}}><FontAwesomeIcon icon={faRemove}/></button></> : <><button className="EditTodo" onClick={()=>{dispatch(CancelEdit(e.id))}}><FontAwesomeIcon icon={faUserEdit}/></button><button onClick={()=>DeleteItem(e.id)} className="EditTodo"><FontAwesomeIcon icon={faUserMinus}/></button></>}</div></td>
                             </tr>))}
                         </tbody>
-                    </table>}
+                    </table>:<Completed/>}
                 </div>
                 <div className="buttons">
                     <button onClick={AddTaskHandle}>Add Task</button>
