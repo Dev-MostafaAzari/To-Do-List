@@ -94,29 +94,32 @@ const DoList = () => {
                 <div className="ListHeader">
                     <h1>Your ToDo List</h1>
                 </div>
-                <ul className="TodoTabs">
-                    <li><motion.button variants={TaskTabsVariants} animate={isinTodo ? "IsTrue" : "IsFalse"} className="TodoList" onClick={()=>setIsintodo(true)}>TaskList</motion.button></li>
-                    <li><motion.button variants={TaskTabsVariants} animate={isinTodo ? "IsFalse" : "IsTrue"} className="Completed" onClick={()=>setIsintodo(false)}>Completed</motion.button></li>
-                </ul>
-                <div className="DoLists">   {/* dar inja yek loding dorost kardam ke ta zamanike loading hast elemnt loading ro nshoon bde va bad az daryaft data az api oon ro hide va data ro nshoon bde */}
-                    {isinTodo ? <table>
-                        <thead>
-                            <tr>
-                                <th>Title</th>
-                                <th>Expiry</th>
-                                <th>Status</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {TodoList.map((e)=>(<tr key={e.id}>
-                                <td>{e.isEdit ? <input className="EditInputTitle" type="text"  onChange={(e)=>setEdit({...edit, Title:e.target.value})} placeholder={e.Title} /> : e.Title}</td>
-                                <td className="TimerTD">{e.isEdit ? <input className="EditInputDeadLine" type="number"  onChange={(e)=>setEdit({...edit, DeadLine:e.target.value})} placeholder={e.DeadLine} /> : <Timer initialTime={e.DeadLine}/>}</td>
-                                <td>{e.isEdit ? <input className="EditInputStatus" type="text"  onChange={(e)=>setEdit({...edit, Status:e.target.value})} placeholder={e.Status} /> : e.Status}</td>
-                                <td><div className="TodoOprations">{e.isEdit ?<><button className="ChangeEdit" onClick={()=>handleChangeEdit({id:e.id,data:edit})}><FontAwesomeIcon icon={faCheck}/></button><button className="CancelEdit" onClick={()=>{dispatch(CancelEdit(e.id))}}><FontAwesomeIcon icon={faRemove}/></button></> : <><button className="EditTodo" onClick={()=>{dispatch(CancelEdit(e.id))}}><FontAwesomeIcon icon={faUserEdit}/></button><button onClick={()=>DeleteItem(e.id)} className="EditTodo"><FontAwesomeIcon icon={faUserMinus}/></button></>}</div></td>
-                            </tr>))}
-                        </tbody>
-                    </table>:<Completed/>}
+                <div className="TodoContainer">
+                    <ul className="TodoTabs">
+                        <li className="MenuLi"><span>Menu</span></li>
+                        <motion.li variants={TaskTabsVariants} animate={isinTodo ? "IsTrue" : "IsFalse"} ><motion.button variants={TaskTabsVariants}  className="TodoList" onClick={()=>setIsintodo(true)}>TaskList</motion.button></motion.li>
+                        <motion.li variants={TaskTabsVariants} animate={isinTodo ? "IsFalse" : "IsTrue"} ><motion.button variants={TaskTabsVariants}  className="Completed" onClick={()=>setIsintodo(false)}>Completed</motion.button></motion.li>
+                    </ul>
+                    <div className="DoLists">   {/* dar inja yek loding dorost kardam ke ta zamanike loading hast elemnt loading ro nshoon bde va bad az daryaft data az api oon ro hide va data ro nshoon bde */}
+                        {isinTodo ? <table>
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Expiry</th>
+                                    <th>Status</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {TodoList.map((e)=>(<tr key={e.id}>
+                                    <td>{e.isEdit ? <input className="EditInputTitle" type="text"  onChange={(e)=>setEdit({...edit, Title:e.target.value})} placeholder={e.Title} /> : e.Title}</td>
+                                    <td className="TimerTD">{e.isEdit ? <input className="EditInputDeadLine" type="number"  onChange={(e)=>setEdit({...edit, DeadLine:e.target.value})} placeholder={e.DeadLine} /> : <Timer initialTime={e.DeadLine}/>}</td>
+                                    <td>{e.isEdit ? <input className="EditInputStatus" type="text"  onChange={(e)=>setEdit({...edit, Status:e.target.value})} placeholder={e.Status} /> : e.Status}</td>
+                                    <td><div className="TodoOprations">{e.isEdit ?<><button className="ChangeEdit" onClick={()=>handleChangeEdit({id:e.id,data:edit})}><FontAwesomeIcon icon={faCheck}/></button><button className="CancelEdit" onClick={()=>{dispatch(CancelEdit(e.id))}}><FontAwesomeIcon icon={faRemove}/></button></> : <><button className="EditTodo" onClick={()=>{dispatch(CancelEdit(e.id))}}><FontAwesomeIcon icon={faUserEdit}/></button><button onClick={()=>DeleteItem(e.id)} className="EditTodo"><FontAwesomeIcon icon={faUserMinus}/></button></>}</div></td>
+                                </tr>))}
+                            </tbody>
+                        </table>:<Completed/>}
+                    </div>
                 </div>
                 <div className="buttons">
                     <button onClick={AddTaskHandle}>Add Task</button>
