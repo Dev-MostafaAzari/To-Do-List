@@ -40,12 +40,12 @@ const AddTaskVariants = {
 
 const TaskTabsVariants = {
     IsTrue:{
-        backgroundColor:"Blue",
-        color:"White",
+        backgroundColor:"Orange",
+        color:"Black",
     },
     IsFalse:{
         backgroundColor:"Gray",
-        color:"Black",
+        color:"#00000063",
     },
 };
 
