@@ -23,7 +23,7 @@ const ToDoListVariants = {
 
 };
 
-const AddTaskVariants = {
+const AddTaskVariants = {    //AddTask variants for AddTask element
     initial:{
         opacity:0,
         display:"none",
@@ -38,7 +38,7 @@ const AddTaskVariants = {
     },
 };
 
-const TaskTabsVariants = {
+const TaskTabsVariants = {      //variants for Tabs Motions
     IsTrue:{
         backgroundColor:"Orange",
         color:"Black",
@@ -79,13 +79,13 @@ const DoList = () => {
     };
 
     const DeleteItem = (id) =>{
-        dispatch(DeleteTodo(id));   //id hammon id elemnt dar array hast ke be in tabe dar redux pas midim
+        dispatch(DeleteTodo(id));   //giving each element id to this method 
         dispatch(CancelEdit(id));
     };
 
     const handleChangeEdit=(data)=>{
         dispatch(ChangeEdit(data));
-        //setEdit({...edit , Title:"",DeadLine:"",Status:""});   //state ro khali mikonim ta darsoorat edit bdoon ezafe shodan new value dar input ha "" vared shavad
+        //setEdit({...edit , Title:"",DeadLine:"",Status:""}); 
     };
 
     return (
@@ -100,7 +100,7 @@ const DoList = () => {
                         <motion.li variants={TaskTabsVariants} animate={isinTodo ? "IsTrue" : "IsFalse"} ><motion.button variants={TaskTabsVariants}  className="TodoList" onClick={()=>setIsintodo(true)}>TaskList</motion.button></motion.li>
                         <motion.li variants={TaskTabsVariants} animate={isinTodo ? "IsFalse" : "IsTrue"} ><motion.button variants={TaskTabsVariants}  className="Completed" onClick={()=>setIsintodo(false)}>Completed</motion.button></motion.li>
                     </ul>
-                    <div className="DoLists">   {/* dar inja yek loding dorost kardam ke ta zamanike loading hast elemnt loading ro nshoon bde va bad az daryaft data az api oon ro hide va data ro nshoon bde */}
+                    <div className="DoLists">   
                         {isinTodo ? <table>
                             <thead>
                                 <tr>
@@ -124,14 +124,14 @@ const DoList = () => {
                 <div className="buttons">
                     <button onClick={AddTaskHandle}>Add Task</button>
                 </div>
-                <motion.div variants={AddTaskVariants} animate={addTask ? "IsTrue" : "IsFalse"} initial="initial" transition={{duration:0.3}} className="AddTaskWrapper">  {/* dar inja addTask state dakhel redux hast */}
+                <motion.div variants={AddTaskVariants} animate={addTask ? "IsTrue" : "IsFalse"} initial="initial" transition={{duration:0.3}} className="AddTaskWrapper">  {/* addTask from Slice State */}
                     <motion.div variants={AddTaskVariants} className="AddTask">
                         <div className="AddTaskCloseBtn">
                             <button onClick={AddTaskHandle}><FontAwesomeIcon icon={faClose} /></button>
                         </div>
                         <h1>Add New Task</h1>
                         <form onSubmit={(e)=>AddTodoHandle(todo,e)} className="AddTaskInput">
-                            <input type="text" value={todo.Title} required onChange={(e) => setTodo({...todo , Title:e.target.value , id:Math.floor(Math.random()*10000000)})} placeholder="Task Name" />   {/* hamzaman yek id random ham midim */}
+                            <input type="text" value={todo.Title} required onChange={(e) => setTodo({...todo , Title:e.target.value , id:Math.floor(Math.random()*10000000)})} placeholder="Task Name" />   {/* creating a random Id while creating Title for element */}
                             <input type="number" max={48} min={1} value={todo.DeadLine} required onChange={(e) => setTodo({...todo , DeadLine:e.target.value})} placeholder="FinishTime(hr)" />
                             <input type="text" value={todo.Status} required onChange={(e) => setTodo({...todo , Status:e.target.value})} placeholder="status" />
                             <button type="submit">Add Task</button>
