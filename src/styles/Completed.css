@@ -1,0 +1,15 @@
+.CompleteTabOperationBtns
+{
+    font-size: 30px;
+    background-color: transparent;
+    color:orange;
+    border:none;
+    cursor: pointer;
+}
+.CompleteTabOperationDiv
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 15px;
+}
