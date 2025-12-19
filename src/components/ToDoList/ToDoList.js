@@ -97,10 +97,12 @@ const DoList = () => {
                 <div className="TodoContainer">
                     <ul className="TodoTabs">
                         <li className="MenuLi"><span>Menu</span></li>
-                        <motion.li variants={TaskTabsVariants} animate={isinTodo ? "IsTrue" : "IsFalse"} ><motion.button variants={TaskTabsVariants}  className="TodoList" onClick={()=>setIsintodo(true)}>TaskList</motion.button></motion.li>
-                        <motion.li variants={TaskTabsVariants} animate={isinTodo ? "IsFalse" : "IsTrue"} ><motion.button variants={TaskTabsVariants}  className="Completed" onClick={()=>setIsintodo(false)}>Completed</motion.button></motion.li>
+                        <div className="TabsBtns">
+                            <motion.li variants={TaskTabsVariants} animate={isinTodo ? "IsTrue" : "IsFalse"} ><motion.button variants={TaskTabsVariants}  className="TodoList" onClick={()=>setIsintodo(true)}>TaskList</motion.button></motion.li>
+                            <motion.li variants={TaskTabsVariants} animate={isinTodo ? "IsFalse" : "IsTrue"} ><motion.button variants={TaskTabsVariants}  className="Completed" onClick={()=>setIsintodo(false)}>Completed</motion.button></motion.li>
+                        </div>
                     </ul>
-                    <div className="DoLists">   
+                    <div className="DoLists">  
                         {isinTodo ? <table>
                             <thead>
                                 <tr>

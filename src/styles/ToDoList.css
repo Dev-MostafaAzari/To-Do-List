@@ -295,6 +295,11 @@
     {
         width: 100% !important;
     }
+    .TodoContainer
+    {
+        flex-direction: column !important;
+        gap: 5px !important;
+    }
     .ListHeader
     {
         justify-content: center !important;
@@ -306,7 +311,7 @@
     }
     .DoLists th 
     {
-        font-size: 15px !important;
+        font-size: 18px !important;
     }
     .DoLists td 
     {
@@ -390,6 +395,38 @@
     .CancelEdit
     {
         font-size: 20px !important;
+    }
+    .TodoTabs
+    {
+        flex-direction: column !important;
+        border-right: none !important;
+        width: 100%;
+    }
+    .TodoTabs li 
+    {
+        font-size: 18px !important;
+        width: 100% !important;
+    }
+    .TabsBtns
+    {
+        display: flex !important;
+        width: 100% !important;
+        flex-direction: row !important;
+    }
+    .TabsBtns li 
+    {
+        height: 50px !important;
+    }
+    .TodoTabs li button
+    {
+        width: 100% !important;
+        height: 100% !important;
+        font-size: 18px !important;
+        font-weight: 600 !important;
+    }
+    .MenuLi
+    {
+        height: auto !important;
     }
 }
 @media (max-width:1280px)
