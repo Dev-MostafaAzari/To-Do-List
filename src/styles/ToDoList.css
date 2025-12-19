@@ -42,7 +42,7 @@
     overflow: scroll;
     scrollbar-width:none;
     scroll-snap-type: mandatory;
-    background-color: #2C2C2C;
+    background-color: transparent;
 }
 .DoLists table
 {
@@ -259,7 +259,7 @@
     border:none;
     border-right: 1px solid gray;
     border-radius: 0px;
-    background-color: #1E201E;
+    background-color: transparent;
     width: 200px;
 }
 .TodoTabs li 

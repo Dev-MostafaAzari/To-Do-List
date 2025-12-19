@@ -44,8 +44,8 @@ const TaskTabsVariants = {      //variants for Tabs Motions
         color:"Black",
     },
     IsFalse:{
-        backgroundColor:"Gray",
-        color:"#00000063",
+        backgroundColor:"Transparent",
+        color:"White",
     },
 };
 
