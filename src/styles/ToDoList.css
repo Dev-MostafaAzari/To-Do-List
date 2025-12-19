@@ -27,6 +27,14 @@
     font-size: 60px;
     color: gray;
 }
+.TodoContainer
+{
+    display:flex;
+    flex-direction: row;
+    border: 1px solid gray;
+    border-radius: 15px;
+    overflow: hidden;
+}
 .DoLists
 {
     width: 100%;
@@ -34,6 +42,7 @@
     overflow: scroll;
     scrollbar-width:none;
     scroll-snap-type: mandatory;
+    background-color: transparent;
 }
 .DoLists table
 {
@@ -198,6 +207,7 @@
     color:gray;
     border:1px solid lightgray;
     border-radius: 5px;
+    width: 150px;
     padding: 3px;
     outline: none;
 }
@@ -207,6 +217,7 @@
     color:gray;
     border:1px solid lightgray;
     border-radius: 5px;
+    width: 40px;
     padding: 3px;
     outline: none;
 }
@@ -215,6 +226,7 @@
     background: transparent;
     color:gray;
     border:1px solid lightgray;
+    width: 150px;
     border-radius: 5px;
     padding: 3px;
     outline: none;
@@ -239,12 +251,54 @@
 {
     padding: 0px !important;
 }
+.TodoTabs
+{
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    border:none;
+    border-right: 1px solid gray;
+    border-radius: 0px;
+    background-color: transparent;
+    width: 200px;
+}
+.TodoTabs li 
+{
+   font-size: 40px;
+   text-align: center;
+   width: 100%;
+   height: 75px;
+}
+.TodoTabs li button
+{
+    width: 100%;
+    height: 100%;
+    background-color: gray;
+    font-size: 20px;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+}
+.MenuLi
+{
+    border-bottom: 1px solid gray;
+    text-align: center;
+    height: auto !important;
+}
+
+
+
 
 @media (max-width:738px)
 {
     .ToDoListWrapper
     {
         width: 100% !important;
+    }
+    .TodoContainer
+    {
+        flex-direction: column !important;
+        gap: 5px !important;
     }
     .ListHeader
     {
@@ -257,7 +311,7 @@
     }
     .DoLists th 
     {
-        font-size: 15px !important;
+        font-size: 18px !important;
     }
     .DoLists td 
     {
@@ -341,6 +395,38 @@
     .CancelEdit
     {
         font-size: 20px !important;
+    }
+    .TodoTabs
+    {
+        flex-direction: column !important;
+        border-right: none !important;
+        width: 100%;
+    }
+    .TodoTabs li 
+    {
+        font-size: 18px !important;
+        width: 100% !important;
+    }
+    .TabsBtns
+    {
+        display: flex !important;
+        width: 100% !important;
+        flex-direction: row !important;
+    }
+    .TabsBtns li 
+    {
+        height: 50px !important;
+    }
+    .TodoTabs li button
+    {
+        width: 100% !important;
+        height: 100% !important;
+        font-size: 18px !important;
+        font-weight: 600 !important;
+    }
+    .MenuLi
+    {
+        height: auto !important;
     }
 }
 @media (max-width:1280px)

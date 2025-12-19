@@ -108,6 +108,7 @@
 #RegisterTermsSpan
 {
     color: white !important;
+    font-size: 18px !important;
 }
 .RegisterCheck input 
 {
@@ -163,4 +164,8 @@
         padding: 0 !important;
         width: 25px !important;
     }
+    .RegisterForm span
+    {
+        font-size: 15px !important;
+    } 
 }
