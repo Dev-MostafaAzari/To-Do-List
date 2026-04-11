@@ -82,7 +82,7 @@
     width: 100%;
     display: flex;
     align-items: start;
-    justify-content: end;
+    justify-content: center;
 }
 .buttons button 
 {
@@ -90,6 +90,8 @@
     font-size: 20px;
     border-radius: 15px;
     cursor: pointer;
+    transition: all 0.5s;
+    border: none;
 }
 .AddTaskWrapper
 {
