@@ -10,11 +10,9 @@ import Completed from './Completed/Completed';
 
 const ToDoListVariants = {
     initial:{
-        x:-200,
         opacity:0,
     },
     animate : {
-        x:0,
         opacity:1,
         transition:{
             duration:0.5
@@ -30,7 +28,7 @@ const AddTaskVariants = {    //AddTask variants for AddTask element
     },
     IsTrue:{
         opacity:1,
-        display:"block",
+        display:"flex",
     },
     IsFalse:{
         opacity:0,
@@ -128,23 +126,26 @@ const DoList = () => {
                         </table>:<Completed/>}
                     </div> */}
                     <div className="DoLists">
-                        
+                        <div className="TodosTabsBtn">
+                            {isinTodo ? <button className="disabledTodosTabBtn" disabled >All Tasks</button>:<button className="TodosTabBtn" onClick={()=>{setIsintodo(true)}}>All Tasks</button>}
+                            {isinTodo === true ? <button className="TodosTabBtn" onClick={()=>{setIsintodo(false)}}>Completed Tasks</button>:<button className="disabledTodosTabBtn" disabled>Completed Tasks</button>}
+                        </div>
                     </div>
                 </div>
                 <div className="buttons">
-                    <motion.button initial={{background:"lightblue"}} whileHover={{background:"darkblue",color:"white"}} onClick={AddTaskHandle}>Add Task</motion.button>
+                    <motion.button initial={{background:"lightblue"}} whileHover={{background:"darkblue",color:"white"}} onClick={AddTaskHandle}>New Task</motion.button>
                 </div>
                 <motion.div variants={AddTaskVariants} animate={addTask ? "IsTrue" : "IsFalse"} initial="initial" transition={{duration:0.3}} className="AddTaskWrapper">  {/* addTask from Slice State */}
                     <motion.div variants={AddTaskVariants} className="AddTask">
                         <div className="AddTaskCloseBtn">
                             <button onClick={AddTaskHandle}><FontAwesomeIcon icon={faClose} /></button>
                         </div>
-                        <h1>Add New Task</h1>
+                        <h1>Create New Task</h1>
                         <form onSubmit={(e)=>AddTodoHandle(todo,e)} className="AddTaskInput">
                             <input type="text" value={todo.Title} required onChange={(e) => setTodo({...todo , Title:e.target.value , id:Math.floor(Math.random()*10000000)})} placeholder="Task Name" />   {/* creating a random Id while creating Title for element */}
                             <input type="number" max={48} min={1} value={todo.DeadLine} required onChange={(e) => setTodo({...todo , DeadLine:e.target.value})} placeholder="FinishTime(hr)" />
                             <input type="text" value={todo.Status} required onChange={(e) => setTodo({...todo , Status:e.target.value})} placeholder="status" />
-                            <button type="submit">Add Task</button>
+                            <button type="submit">Create Task</button>
                         </form>
                     </motion.div>
                 </motion.div>

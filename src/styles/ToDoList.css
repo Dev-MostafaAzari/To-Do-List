@@ -7,7 +7,6 @@
 .ToDoListWrapper
 {
     /* width: 1366px; */
-    padding: 20px;
     height: 100%;
     color:white;
     margin: auto;
@@ -32,6 +31,7 @@
 .TodoContainer
 {
     display:flex;
+    margin: 20px;
     flex-direction: row;
     border: 1px solid gray;
     border-style: dashed;
@@ -48,34 +48,29 @@
     scroll-snap-type: mandatory;
     background-color: transparent;
 }
-.DoLists table
+.TodosTabsBtn
 {
     width: 100%;
+    padding: 10px;
+    display: flex;
+    gap: 5px;
 }
-.DoLists tbody
+.TodosTabBtn
 {
-    text-align: center;
-}
-.DoLists th 
-{
-    font-size: 40px;
-}
-.DoLists td
-{
-    padding: 20px;
+    padding: 10px;
     font-size: 20px;
+    cursor: pointer;
+    border-radius: 15px;
+    border: none;
+    background: orange;
 }
-.DoLists table
+.disabledTodosTabBtn
 {
-    border-collapse: collapse;
-}
-.DoLists th 
-{
-    border-bottom: 1px solid gray;
-}
-.DoLists td 
-{
-    border-bottom: 1px solid rgba(116, 115, 115, 0.5);
+    padding: 10px;
+    font-size: 20px;
+    border-radius: 15px;
+    border: none;
+    background: gray;
 }
 .DoLists input 
 {
@@ -87,6 +82,7 @@
     display: flex;
     align-items: start;
     justify-content: center;
+    padding: 10px;
 }
 .buttons button 
 {
@@ -103,19 +99,18 @@
     height: 100%;
     position: absolute;
     z-index: 998;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 .AddTask
 {
-    position: absolute;
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 600px;
     height: 500px;
-    gap:10px;
-    top:50%;
-    left:50%;
-    transform: translate(-50% , -50% );
     z-index: 998;
     background-color: white;
     color: black;
@@ -257,47 +252,15 @@
 {
     padding: 0px !important;
 }
-.TodoTabs
-{
-    display: flex;
-    flex-direction: column;
-    list-style: none;
-    border:none;
-    border-right: 1px solid gray;
-    border-radius: 0px;
-    background-color: transparent;
-    width: 200px;
-}
-.TodoTabs li 
-{
-   font-size: 40px;
-   text-align: center;
-   width: 100%;
-   height: 75px;
-}
-.TodoTabs li button
-{
-    width: 100%;
-    height: 100%;
-    background-color: gray;
-    font-size: 20px;
-    font-weight: 700;
-    border: none;
-    cursor: pointer;
-}
-.MenuLi
-{
-    border-bottom: 1px solid gray;
-    text-align: center;
-    height: auto !important;
-}
+
+
 
 
 
 
 @media (max-width:738px)
 {
-    .ToDoListWrapper
+    /* .ToDoListWrapper
     {
         width: 100% !important;
     }
@@ -429,15 +392,12 @@
         height: 100% !important;
         font-size: 18px !important;
         font-weight: 600 !important;
-    }
-    .MenuLi
-    {
-        height: auto !important;
-    }
+    } */
+    
 }
 @media (max-width:1280px)
 {
-    .ToDoListWrapper
+    /* .ToDoListWrapper
     {
         width: 100%;
         gap: 30px;
@@ -498,5 +458,5 @@
         top:30%;
         left: 45%;
         transform: translate(-50%,-50%);
-    }
+    } */
 }
