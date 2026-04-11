@@ -95,7 +95,7 @@ const DoList = () => {
                     <h1>Your ToDo List</h1>
                 </div>
                 <div className="TodoContainer">
-                    <ul className="TodoTabs">
+                    {/* <ul className="TodoTabs">
                         <li className="MenuLi"><span>Menu</span></li>
                         <div className="TabsBtns">
                             <motion.li variants={TaskTabsVariants} animate={isinTodo ? "IsTrue" : "IsFalse"} ><motion.button variants={TaskTabsVariants}  className="TodoList" onClick={()=>setIsintodo(true)}>TaskList</motion.button></motion.li>
@@ -126,6 +126,9 @@ const DoList = () => {
                                 </tr>))}
                             </tbody>
                         </table>:<Completed/>}
+                    </div> */}
+                    <div className="DoLists">
+                        
                     </div>
                 </div>
                 <div className="buttons">
