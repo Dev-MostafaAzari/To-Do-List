@@ -20,7 +20,9 @@ const AllTodos = (props) => {
         <div className="AllTodosContainer">
             <div className="AllTodosWrapper">
                 {TodoList.length === 0 ?
-                    <h2 className="EmptyTodosTitle">There is no Task Here</h2>
+                    <div className="EmptyTodoContainer">
+                        <p className="EmptyTodosTitle">Nothing going on right now ☹</p>
+                    </div>    
                     :
                     <div className="AllTodosList">
                         {TodoList.map((item) => 

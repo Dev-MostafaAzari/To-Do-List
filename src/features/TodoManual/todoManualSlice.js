@@ -5,7 +5,7 @@ const initialState = {
     loading : false,
     addTask : false,
     TodoList : [{Title:"Say Hello to the World",Descript:"My first Task",Status:"High",id:Math.floor(Math.random()*10000000),isEdit:false}], //bejay inke baray isEdit yek state joda tarif konim onn ro dar inja tarif mikonim
-    CompletedTasks:[],                                                                                                                                
+    CompletedTasks:[{Title:"Get To this point",Descript:"nothing",Status:"low",id:Math.floor(Math.random()*10000000),isEdit:false}],                                                                                                                                
 };
 
 

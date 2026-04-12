@@ -11,27 +11,31 @@ const Completed = ()=>{
 
 
     return(
-        <table>
-            <thead>
-                <tr>
-                    <th>Title</th>
-                    <th>Status</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                {CompletedTasks.map((element)=>(<tr key={element.id}>
-                    <td>{element.Title}</td>
-                    <td>Done</td>
-                    <td>
-                        <div className="CompleteTabOperationDiv">
-                            <button className="CompleteTabOperationBtns" title="UnDone" onClick={()=>{dispatch(TaskUnDone(element.id))}}><FontAwesomeIcon icon={faUndo}/></button><button className="CompleteTabOperationBtns" title="Delete"
-                            onClick={()=>{dispatch(CompleteDelete(element.id))}}><FontAwesomeIcon icon={faTrash}/></button>
-                        </div>
-                    </td>
-                </tr>))}
-            </tbody>
-        </table>
+        <div className="CompletedTasksContainer">
+            <div className="CompletedTasksWrapper">
+                {CompletedTasks.length === 0 ? 
+                    <div className="EmptyCompletedTasks">
+                        <p>No Task Completed Yet ☹</p>
+                    </div>
+                    : 
+                    <div className="CompletedList">
+                        {CompletedTasks.map((item) => 
+                            <div className="CompletedTaskCard">
+                                <div className="CompletedTaskCardTitle">
+                                    <p className="CompletedCardTitle"><span>Title :</span>{item.Title}</p>
+                                </div>
+                                <div className="CompletedTaskDescript">
+                                    <p className="CompletedCardDiscript"><span>Discription :</span>{item.Descript} </p>
+                                </div>
+                                <span className="CompletedCardSpan">
+                                    Done
+                                </span>
+                            </div>
+                        )}
+                    </div>
+                }
+            </div>
+        </div>
     )
 };
 
