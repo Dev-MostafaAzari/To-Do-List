@@ -26,10 +26,10 @@ const AllTodos = (props) => {
                         {TodoList.map((item) => 
                             <div className="AllTodoTaskCard">
                                 <div className="AllTodoTaskCardTitle">
-                                    <h3 className="AllTodoCardTitle">Title : {item.Title}</h3>
+                                    <p className="AllTodoCardTitle"><span>Title :</span>{item.Title}</p>
                                 </div>
                                 <div className="AllTodoTaskDescript">
-                                    {item.Descript}
+                                    <p className="AllTodoCardDiscript"><span>Discription :</span>{item.Descript} </p>
                                 </div>
                                 <span className="AllTodoCardSpan">
                                     {item.Status}
