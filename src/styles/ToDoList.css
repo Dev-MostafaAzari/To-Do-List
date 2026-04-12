@@ -43,9 +43,7 @@
 {
     width: 100%;
     height: 100%;
-    overflow: scroll;
-    scrollbar-width:none;
-    scroll-snap-type: mandatory;
+    overflow: hidden;
     background-color: transparent;
 }
 .TodosTabsBtn
@@ -54,7 +52,6 @@
     padding: 10px;
     display: flex;
     gap: 5px;
-    position: fixed;
 }
 .TodosTabBtn
 {
