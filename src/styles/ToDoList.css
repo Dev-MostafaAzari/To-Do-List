@@ -150,6 +150,15 @@
     padding: 20px;
     font-size: 20px;
     border-radius: 20px;
+    border:2px solid gray;
+}
+.AddTaskInput select 
+{
+    width: 500px;
+    padding: 20px;
+    font-size: 20px;
+    border-radius: 20px;
+    border:2px solid gray;
 }
 .AddTaskInput button 
 {

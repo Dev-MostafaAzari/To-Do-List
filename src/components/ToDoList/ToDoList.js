@@ -56,14 +56,14 @@ const DoList = () => {
     const [todo,setTodo]=useState({
         Title:"",
         Descript:"",
-        Status:"",
+        Priority:"Low",
         id:"",
     });
 
     const [edit,setEdit]=useState([{
         Title:"",
         Descript:"",
-        Status:"",
+        Priority:"",
     }]);
 
     const AddTaskHandle = () => { 
@@ -73,7 +73,7 @@ const DoList = () => {
     const AddTodoHandle = (todo,e) =>{
         e.preventDefault();
         dispatch(AddTodo(todo));
-        setTodo({...todo , Title:"" , Descript:"", Status:"" });
+        setTodo({...todo , Title:"" , Descript:"", Priority:"" });
         AddTaskHandle();
     };
 
@@ -150,7 +150,17 @@ const DoList = () => {
                         <form onSubmit={(e)=>AddTodoHandle(todo,e)} className="AddTaskInput">
                             <input type="text" value={todo.Title} required onChange={(e) => setTodo({...todo , Title:e.target.value , id:Math.floor(Math.random()*10000000)})} placeholder="Task Name" />   {/* creating a random Id while creating Title for element */}
                             <input type="number" max={48} min={1} value={todo.Descript} required onChange={(e) => setTodo({...todo , Descript:e.target.value})} placeholder="FinishTime(hr)" />
-                            <input type="text" value={todo.Status} required onChange={(e) => setTodo({...todo , Status:e.target.value})} placeholder="status" />
+                            {/* <input list="priority" required value={todo.Status} onChange={(e)=> setTodo({...todo , Status : e.target.value})} placeholder="Priority"/>
+                            <datalist id="priority">
+                                <option value="Low">Low</option>
+                                <option value="Mid">Mid</option>
+                                <option value="High">High</option>
+                            </datalist> */}
+                            <select id="priority" onChange={(e)=> setTodo({...todo , Priority : e.target.value})}>
+                                <option value="Low">Low</option>
+                                <option value="Mid">Mid</option>
+                                <option value="High">High</option>
+                            </select> 
                             <button type="submit">Create Task</button>
                         </form>
                     </motion.div>

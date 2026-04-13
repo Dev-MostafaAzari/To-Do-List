@@ -34,7 +34,7 @@ const AllTodos = (props) => {
                                     <p className="AllTodoCardDiscript"><span>Discription :</span>{item.Descript} </p>
                                 </div>
                                 <span className="AllTodoCardSpan">
-                                    {item.Status}
+                                    {item.Priority}
                                 </span>
                             </div>
                         )}
