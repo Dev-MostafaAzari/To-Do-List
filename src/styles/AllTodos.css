@@ -58,6 +58,7 @@
     flex: 2;
     display: flex;
     align-items: end;
+    justify-content: center;
 }
 .AllTodoCardTitle
 {
@@ -65,25 +66,21 @@
     font-family:'Times New Roman', Times, serif;
     color: blue;
     padding-left: 5px;
-    
-}
-.AllTodoCardTitle span 
-{
-    color : black;
 }
 .AllTodoTaskDescript
 {
-    background: lightgray;
-    border-radius: 0px 0px 15px 15px lightgray;
+    /* background: lightgray;
+    border-radius: 0px 0px 15px 15px lightgray; */
+    border-top: 1px dashed gray;
     flex: 2;
     padding: 15px;
+    position: relative;
 }
 .AllTodoCardDiscript
 {
     overflow: hidden;
     white-space: nowrap;
-    text-overflow: ellipsis;
-    height: 100%;
+    text-overflow:ellipsis;
 }
 .AllTodoCardSpan
 {
@@ -96,4 +93,32 @@
     left: -20px;
     cursor: default;
 
+}
+.AllTodoOperationBtns
+{
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    padding: 10px;
+    gap: 10px;
+    background: rgba(255, 166, 0, 0.5);
+}
+.AllTodoOperationBtns button
+{
+    font-size: 30px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    background: transparent;
+}
+.CheckTodo
+{
+    color:green;
+}
+.DeleteTodo
+{
+    color:navy;
 }

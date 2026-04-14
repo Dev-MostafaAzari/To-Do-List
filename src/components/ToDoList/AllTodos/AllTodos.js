@@ -1,6 +1,8 @@
 import { useSelector , useDispatch } from "react-redux";
 import {DeleteTodo,CancelEdit,ChangeEdit,TaskDone} from "../../../features/TodoManual/todoManualSlice";
 import "../../../styles/AllTodos.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {faCheckSquare, faTrashCan} from "@fortawesome/free-solid-svg-icons";
 
 const AllTodos = (props) => {
     const {TodoList} = useSelector(state => state.manualTodo)
@@ -28,10 +30,14 @@ const AllTodos = (props) => {
                         {TodoList.map((item) => 
                             <div className="AllTodoTaskCard">
                                 <div className="AllTodoTaskCardTitle">
-                                    <p className="AllTodoCardTitle"><span>Title :</span>{item.Title}</p>
+                                    <p className="AllTodoCardTitle">{item.Title}</p>
                                 </div>
                                 <div className="AllTodoTaskDescript">
                                     <p className="AllTodoCardDiscript"><span>Discription :</span>{item.Descript} </p>
+                                    <div className="AllTodoOperationBtns">
+                                        <button className="CheckTodo" title="Complete"><FontAwesomeIcon icon={faCheckSquare}/></button>
+                                        <button className="DeleteTodo" title="Delete"><FontAwesomeIcon icon={faTrashCan}/></button>
+                                    </div>    
                                 </div>
                                 <span className="AllTodoCardSpan">
                                     {item.Priority}
