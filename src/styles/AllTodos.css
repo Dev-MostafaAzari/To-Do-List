@@ -78,6 +78,13 @@
     flex: 2;
     padding: 15px;
 }
+.AllTodoCardDiscript
+{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    height: 100%;
+}
 .AllTodoCardSpan
 {
     position: absolute;
