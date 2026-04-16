@@ -20,11 +20,18 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 10px;
 }
 .EmptyTodosTitle
 {
     font-size: 45px;
     color: lightgray;
+    font-family: 'Times New Roman', Times, serif;
+}
+.EmptyTodosTitle2
+{
+    font-size: 35px;
+    color: rgba(211, 211, 211, 0.541);
     font-family: 'Times New Roman', Times, serif;
 }
 .AllTodosList
@@ -82,6 +89,12 @@
     overflow: hidden;
     white-space: nowrap;
     text-overflow:ellipsis;
+    color: black;
+}
+.AllTodoCardDiscript span 
+{
+    font-weight: 600;
+    color:rgba(0, 0, 0, 0.8);
 }
 .AllTodoCardSpan
 {
@@ -148,7 +161,7 @@
 .DeleteConfirmationContainer p
 {
     color: black;
-    font-size: 20px;
+    font-size: 25px;
 }
 .DeleteConfirmationContainer div 
 {

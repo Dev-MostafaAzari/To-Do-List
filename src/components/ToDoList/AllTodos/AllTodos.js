@@ -26,7 +26,8 @@ const AllTodos = (props) => {
             <div className="AllTodosWrapper">
                 {TodoList.length === 0 ?
                     <div className="EmptyTodoContainer">
-                        <p className="EmptyTodosTitle">Nothing going on right now ☹</p>
+                        <p className="EmptyTodosTitle">Nothing going on right now</p>
+                        <p className="EmptyTodosTitle2">Try Create New Task😉</p>
                     </div>    
                     :
                     <div className="AllTodosList">
@@ -50,7 +51,7 @@ const AllTodos = (props) => {
                         {deleteAlert ? 
                             <div className="DeleteAlertContainer">
                                 <div className="DeleteConfirmationContainer">
-                                    <p>Are you sure about deleting this task?</p>
+                                    <p>Are you sure about deleting this task?😦</p>
                                     <div>
                                         <button id="CancelDelete" onClick={()=>{setDeleteAlret(prev=>prev=!prev)}}>Cancel</button>
                                         <button id="ConfirmDelete" onClick={()=>{DeleteItem(deleteItemId);setDeleteAlret(prev=>prev=!prev)}}>Delete</button>
