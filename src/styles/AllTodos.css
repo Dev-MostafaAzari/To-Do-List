@@ -39,6 +39,7 @@
     gap: 5px;
     overflow: scroll;
     scrollbar-width: none;
+    position: relative;
 }
 .AllTodoTaskCard
 {
@@ -121,4 +122,64 @@
 .DeleteTodo
 {
     color:navy;
+}
+/*DeleteTaskAlert*/
+.DeleteAlertContainer
+{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+    position: absolute;
+}
+.DeleteConfirmationContainer
+{
+    background: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border-radius: 15px;
+
+}
+.DeleteConfirmationContainer p
+{
+    color: black;
+    font-size: 20px;
+}
+.DeleteConfirmationContainer div 
+{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+.DeleteConfirmationContainer div button
+{
+    padding: 5px;
+    font-size: 25px;
+    border-radius: 15px;
+    border: 1px solid rgba(128, 128, 128, 0.479);
+    cursor: pointer;
+    transition: all 0.5s;
+}
+#CancelDelete
+{
+    background: lightgray;
+}
+#ConfirmDelete
+{
+    background: rgba(255, 0, 0, 0.5);
+}
+#CancelDelete:hover
+{
+    background: gray;
+}
+#ConfirmDelete:hover
+{
+    background: red;
 }

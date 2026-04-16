@@ -3,10 +3,13 @@ import {DeleteTodo,CancelEdit,ChangeEdit,TaskDone} from "../../../features/TodoM
 import "../../../styles/AllTodos.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faCheckSquare, faTrashCan} from "@fortawesome/free-solid-svg-icons";
+import { useState } from "react";
 
 const AllTodos = (props) => {
     const {TodoList} = useSelector(state => state.manualTodo)
     const dispatch = useDispatch();
+    const [deleteAlert,setDeleteAlret]=useState(false);
+    const [deleteItemId,setDeleteAlertId]=useState();
 
     const DeleteItem = (id) =>{
         dispatch(DeleteTodo(id));   //giving each element id to this method 
@@ -35,8 +38,8 @@ const AllTodos = (props) => {
                                 <div className="AllTodoTaskDescript">
                                     <p className="AllTodoCardDiscript"><span>Discription :</span>{item.Descript} </p>
                                     <div className="AllTodoOperationBtns">
-                                        <button className="CheckTodo" title="Complete"><FontAwesomeIcon icon={faCheckSquare}/></button>
-                                        <button className="DeleteTodo" title="Delete"><FontAwesomeIcon icon={faTrashCan}/></button>
+                                        <button className="CheckTodo" title="Complete" onClick={()=>{dispatch(TaskDone(item.id))}}><FontAwesomeIcon icon={faCheckSquare}/></button>
+                                        <button className="DeleteTodo" title="Delete" onClick={()=>{setDeleteAlret(prev=>prev=!prev);setDeleteAlertId(item.id)}}><FontAwesomeIcon icon={faTrashCan}/></button>
                                     </div>    
                                 </div>
                                 <span className="AllTodoCardSpan">
@@ -44,6 +47,20 @@ const AllTodos = (props) => {
                                 </span>
                             </div>
                         )}
+                        {deleteAlert ? 
+                            <div className="DeleteAlertContainer">
+                                <div className="DeleteConfirmationContainer">
+                                    <p>Are you sure about deleting this task?</p>
+                                    <div>
+                                        <button id="CancelDelete" onClick={()=>{setDeleteAlret(prev=>prev=!prev)}}>Cancel</button>
+                                        <button id="ConfirmDelete" onClick={()=>{DeleteItem(deleteItemId);setDeleteAlret(prev=>prev=!prev)}}>Delete</button>
+                                    </div>
+                                </div>
+                            
+                            </div>
+                            : 
+                            null
+                        }
                     </div>    
                 }
             </div>
