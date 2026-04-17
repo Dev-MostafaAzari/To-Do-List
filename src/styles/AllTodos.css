@@ -99,7 +99,6 @@
 .AllTodoCardSpan
 {
     position: absolute;
-    background: red;
     width: 70px;
     text-align: center;
     transform: rotate(-50deg);

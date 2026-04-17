@@ -20,7 +20,6 @@ const AllTodos = (props) => {
         dispatch(ChangeEdit(data));
         //setEdit({...edit , Title:"",DeadLine:"",Status:""}); 
     };
-
     return (
         <div className="AllTodosContainer">
             <div className="AllTodosWrapper">
@@ -43,7 +42,7 @@ const AllTodos = (props) => {
                                         <button className="DeleteTodo" title="Delete" onClick={()=>{setDeleteAlret(prev=>prev=!prev);setDeleteAlertId(item.id)}}><FontAwesomeIcon icon={faTrashCan}/></button>
                                     </div>    
                                 </div>
-                                <span className="AllTodoCardSpan">
+                                <span className="AllTodoCardSpan" style={{background:(item.Priority === "High" ? "red" : (item.Priority === "Mid" ? "Yellow" : "Gray" ))}}>
                                     {item.Priority}
                                 </span>
                             </div>
