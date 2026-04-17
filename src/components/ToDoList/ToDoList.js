@@ -131,8 +131,8 @@ const DoList = () => {
                             {isinTodo ? <button className="disabledTodosTabBtn" disabled >All Tasks</button>:<button className="TodosTabBtn" onClick={()=>{setIsintodo(true)}}>All Tasks</button>}
                             {isinTodo === true ? <button className="TodosTabBtn" onClick={()=>{setIsintodo(false)}}>Completed Tasks</button>:<button className="disabledTodosTabBtn" disabled>Completed Tasks</button>}
                             {isinTodo ? <div className="SortSection">
-                                <button title="Ascend" onClick={()=>{dispatch(AscendSort())}}><FontAwesomeIcon icon={faSortAmountAsc}/></button>
-                                <button title="Descend" onClick={()=>{dispatch(DescendSort())}}><FontAwesomeIcon icon={faSortAmountDesc}/></button>
+                                <button title="Ascend" onClick={()=>{dispatch(AscendSort())}}><FontAwesomeIcon icon={faSortAmountDesc}/></button>
+                                <button title="Dscend" onClick={()=>{dispatch(DescendSort())}}><FontAwesomeIcon icon={faSortAmountAsc}/></button>
                             </div>:null}
                         </div>
                         {isinTodo ? 

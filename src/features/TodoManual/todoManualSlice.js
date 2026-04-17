@@ -45,13 +45,13 @@ const ManualSlice = createSlice({
            const high =  state.TodoList.filter(item=>item.Priority=== "High");
            const mid = state.TodoList.filter(item => item.Priority=== "Mid");
            const low = state.TodoList.filter(item => item.Priority=== "Low");
-           state.TodoList = (high.concat(mid)).concat(low);
+           state.TodoList = (low.concat(mid)).concat(high);
         },
         DescendSort:(state)=>{
             const high =  state.TodoList.filter(item=>item.Priority=== "High");
             const mid = state.TodoList.filter(item => item.Priority=== "Mid");
             const low = state.TodoList.filter(item => item.Priority=== "Low");
-            state.TodoList = (low.concat(mid)).concat(high);
+            state.TodoList = (high.concat(mid)).concat(low);
         }
     },
 });
