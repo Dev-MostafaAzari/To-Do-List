@@ -52,6 +52,7 @@
     padding: 10px;
     display: flex;
     gap: 5px;
+    position: relative;
 }
 .TodosTabBtn
 {
@@ -69,6 +70,28 @@
     border-radius: 15px;
     border: none;
     background: gray;
+}
+/*sort Todos btns */
+.SortSection
+{
+    position: absolute;
+    right: 0px;
+    padding: 10px;
+    display: flex;
+    gap: 10px;
+}
+.SortSection button
+{
+    font-size: 30px;
+    background: transparent;
+    color: gray;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+.SortSection button:hover
+{
+    color:lightgray;
 }
 .DoLists input 
 {

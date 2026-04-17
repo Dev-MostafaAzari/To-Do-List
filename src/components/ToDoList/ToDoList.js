@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { motion } from "framer-motion";
 import "../../styles/ToDoList.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheck, faClose, faRemove, faTrash, faUserCheck, faUserEdit, faUserMinus } from '@fortawesome/free-solid-svg-icons';
+import { faClose,faSortAmountAsc, faSortAmountDesc} from '@fortawesome/free-solid-svg-icons';
 import { useSelector,useDispatch } from 'react-redux';
-import { AddTodo,AddTask,DeleteTodo,CancelEdit,ChangeEdit,TaskDone} from '../../features/TodoManual/todoManualSlice';
+import { AddTodo,AddTask,DeleteTodo,CancelEdit,ChangeEdit,TaskDone,AscendSort,DescendSort} from '../../features/TodoManual/todoManualSlice';
 import Timer from './Timer/Timer';
 import Completed from './Completed/Completed';
 import AllTodos from './AllTodos/AllTodos';
@@ -130,6 +130,10 @@ const DoList = () => {
                         <div className="TodosTabsBtn">
                             {isinTodo ? <button className="disabledTodosTabBtn" disabled >All Tasks</button>:<button className="TodosTabBtn" onClick={()=>{setIsintodo(true)}}>All Tasks</button>}
                             {isinTodo === true ? <button className="TodosTabBtn" onClick={()=>{setIsintodo(false)}}>Completed Tasks</button>:<button className="disabledTodosTabBtn" disabled>Completed Tasks</button>}
+                            {isinTodo ? <div className="SortSection">
+                                <button title="Ascend" onClick={()=>{dispatch(AscendSort())}}><FontAwesomeIcon icon={faSortAmountAsc}/></button>
+                                <button title="Descend" onClick={()=>{dispatch(DescendSort())}}><FontAwesomeIcon icon={faSortAmountDesc}/></button>
+                            </div>:null}
                         </div>
                         {isinTodo ? 
                             <AllTodos />

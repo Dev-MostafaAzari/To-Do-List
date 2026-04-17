@@ -41,9 +41,21 @@ const ManualSlice = createSlice({
         CompleteDelete:(state,action)=>{
             state.CompletedTasks.splice(state.CompletedTasks.findIndex(item => item.id === action.payload),1);
         },
+        AscendSort:(state)=>{
+           const high =  state.TodoList.filter(item=>item.Priority=== "High");
+           const mid = state.TodoList.filter(item => item.Priority=== "Mid");
+           const low = state.TodoList.filter(item => item.Priority=== "Low");
+           state.TodoList = (high.concat(mid)).concat(low);
+        },
+        DescendSort:(state)=>{
+            const high =  state.TodoList.filter(item=>item.Priority=== "High");
+            const mid = state.TodoList.filter(item => item.Priority=== "Mid");
+            const low = state.TodoList.filter(item => item.Priority=== "Low");
+            state.TodoList = (low.concat(mid)).concat(high);
+        }
     },
 });
 
 
 export default ManualSlice.reducer;
-export const {AddTodo,AddTask,DeleteTodo,CancelEdit,ChangeEdit,TaskDone,TaskUnDone,CompleteDelete} = ManualSlice.actions;
+export const {AddTodo,AddTask,DeleteTodo,CancelEdit,ChangeEdit,TaskDone,TaskUnDone,CompleteDelete,AscendSort,DescendSort} = ManualSlice.actions;
