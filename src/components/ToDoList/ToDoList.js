@@ -8,6 +8,7 @@ import { AddTodo,AddTask,DeleteTodo,CancelEdit,ChangeEdit,TaskDone,AscendSort,De
 import Timer from './Timer/Timer';
 import Completed from './Completed/Completed';
 import AllTodos from './AllTodos/AllTodos';
+import TaskView from './TaskView/TaskView';
 
 const ToDoListVariants = {
     initial:{
@@ -51,7 +52,7 @@ const TaskTabsVariants = {      //variants for Tabs Motions
 const DoList = () => {
 
     const dispatch = useDispatch();
-    const {loading , addTask,TodoList} = useSelector(state=> state.manualTodo);
+    const {loading , addTask,TodoList ,isInTaskView} = useSelector(state=> state.manualTodo);
     const [isinTodo,setIsintodo]=useState(true);
     const [todo,setTodo]=useState({
         Title:"",
@@ -136,9 +137,14 @@ const DoList = () => {
                             </div>:null}
                         </div>
                         {isinTodo ? 
-                            <AllTodos />
+                            <AllTodos isInTaskView={isInTaskView} />
                             :
                             <Completed/>
+                        }
+                        {isInTaskView ? 
+                            <TaskView /> 
+                            :
+                            null
                         }
                     </div>
                 </div>

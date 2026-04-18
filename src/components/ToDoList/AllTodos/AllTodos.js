@@ -1,11 +1,11 @@
 import { useSelector , useDispatch } from "react-redux";
-import {DeleteTodo,CancelEdit,ChangeEdit,TaskDone} from "../../../features/TodoManual/todoManualSlice";
+import {DeleteTodo,CancelEdit,ChangeEdit,TaskDone, ViewTask} from "../../../features/TodoManual/todoManualSlice";
 import "../../../styles/AllTodos.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faCheckSquare, faTrashCan} from "@fortawesome/free-solid-svg-icons";
+import { faCheckSquare, faEye, faTrashCan} from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 
-const AllTodos = (props) => {
+const AllTodos = () => {
     const {TodoList} = useSelector(state => state.manualTodo)
     const dispatch = useDispatch();
     const [deleteAlert,setDeleteAlret]=useState(false);
@@ -16,10 +16,7 @@ const AllTodos = (props) => {
         dispatch(CancelEdit(id));
     };
     
-    const handleChangeEdit=(data)=>{
-        dispatch(ChangeEdit(data));
-        //setEdit({...edit , Title:"",DeadLine:"",Status:""}); 
-    };
+    
     return (
         <div className="AllTodosContainer">
             <div className="AllTodosWrapper">
@@ -45,6 +42,7 @@ const AllTodos = (props) => {
                                 <span className="AllTodoCardSpan" style={{background:(item.Priority === "High" ? "red" : (item.Priority === "Mid" ? "Yellow" : "Gray" ))}}>
                                     {item.Priority}
                                 </span>
+                                <button className="ViewThisTask" onClick={()=>{dispatch(ViewTask(item.id))}} title="ViewTask"><FontAwesomeIcon icon={faEye}/></button>
                             </div>
                         )}
                         {deleteAlert ? 
