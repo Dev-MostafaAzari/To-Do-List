@@ -61,10 +61,14 @@ const ManualSlice = createSlice({
         },
         ToggleIsInTaskView:(state)=>{
             state.isInTaskView = !state.isInTaskView;
+        },
+        SubmitEditViewTask:(state,action)=>{
+            state.ViewTask = action.payload;
+            state.TodoList = state.TodoList.map(item => item.id === action.payload.id ? {...item , ...action.payload}:item);
         }
     },
 });
 
 
 export default ManualSlice.reducer;
-export const {AddTodo,AddTask,DeleteTodo,CancelEdit,ChangeEdit,TaskDone,TaskUnDone,CompleteDelete,AscendSort,DescendSort,ViewTask,ToggleIsInTaskView} = ManualSlice.actions;
+export const {AddTodo,AddTask,DeleteTodo,CancelEdit,ChangeEdit,TaskDone,TaskUnDone,CompleteDelete,AscendSort,DescendSort,ViewTask,ToggleIsInTaskView,SubmitEditViewTask} = ManualSlice.actions;

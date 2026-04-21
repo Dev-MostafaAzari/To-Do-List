@@ -125,3 +125,67 @@
 {
     color: gray;
 }
+/*EditSection*/
+.TitleInputContainer
+{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.TitleAndPriorityInput
+{
+    padding: 10px;
+    scale: 1 !important;
+    font-size: 20px;
+    border-radius: 15px;
+    border: 1px solid gray;
+}
+.PriorityInputContainer
+{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    align-items: center;
+}
+.EditOperationBtnsContainer
+{
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    gap: 10px;
+}
+.EditOperationBtnsContainer button
+{
+    padding: 10px;
+    border: 1px solid gray;
+    border-radius: 15px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+.CancleEdit
+{
+    background: yellow;
+}
+.CancleEdit:hover
+{
+    background: green;
+    color: white;
+}
+.SaveEdit
+{
+    background: lightblue;
+}
+.SaveEdit:hover
+{
+    background: blue;
+    color: white;
+}
+
