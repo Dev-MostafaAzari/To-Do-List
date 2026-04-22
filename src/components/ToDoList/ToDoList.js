@@ -149,7 +149,7 @@ const DoList = () => {
                     </div>
                 </div>
                 <div className="buttons">
-                    <motion.button initial={{background:"lightblue"}} whileHover={{background:"darkblue",color:"white"}} onClick={AddTaskHandle}>New Task</motion.button>
+                    {isInTaskView ? <button style={{background:"lightblue",cursor:"default"}} disabled>New Task</button> : <motion.button initial={{background:"lightblue"}} whileHover={{background:"darkblue",color:"white"}} onClick={AddTaskHandle}>New Task</motion.button>}
                 </div>
                 <motion.div variants={AddTaskVariants} animate={addTask ? "IsTrue" : "IsFalse"} initial="initial" transition={{duration:0.3}} className="AddTaskWrapper">  {/* addTask from Slice State */}
                     <motion.div variants={AddTaskVariants} className="AddTask">

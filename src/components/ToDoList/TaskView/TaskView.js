@@ -52,7 +52,7 @@ const TaskView = () => {
                             </div>
                         </div>
                         <div className="ViewDiscriptAndOperations">
-                            <textarea className="TaskViewTodoDiscript" placeholder="Add New Discription :" value={editedData.Descript} onChange={(e)=>{setEditedData({...editedData , Descript:e.target.value})}}/>
+                            <textarea className="TaskViewTodoDiscript" required placeholder="Add New Discription :" value={editedData.Descript} onChange={(e)=>{setEditedData({...editedData , Descript:e.target.value})}}/>
                         </div>
                         <div className="EditOperationBtnsContainer">
                             <button className="CancleEdit" onClick={()=>{setIsViewEdit(prev => prev=!prev);setEditedData({Title:"",Descript:"",Priority:"Low",id:ViewTask.id})}}>Cancle</button>
