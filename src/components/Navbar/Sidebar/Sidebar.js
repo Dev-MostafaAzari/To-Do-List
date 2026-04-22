@@ -55,7 +55,7 @@ const Sidebar = () => {
                     <motion.a variants={ListVariants} whileHover={{scale:1.1,transition:{duration:0.3}}} whileTap={{scale:0.9}} onClick={()=>{setOpen(prev=>prev=!prev)}}><Link to="/Login">Login</Link></motion.a>
                     <motion.a variants={ListVariants} whileHover={{scale:1.1,transition:{duration:0.3}}} whileTap={{scale:0.9}} onClick={()=>{setOpen(prev=>prev=!prev)}}><Link to="ToDoList">ToDoList</Link></motion.a>
                 </motion.div>
-                <ToggleButton setOpen={setOpen} />
+                <ToggleButton setOpen={setOpen} open={open} />
             </motion.div>
 
         </div>

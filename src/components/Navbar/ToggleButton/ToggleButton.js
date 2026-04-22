@@ -1,10 +1,9 @@
-import React from 'react';
 import {motion} from "framer-motion";
 
 
-const ToggleButton = ({ setOpen }) => {
+const ToggleButton = ({ setOpen , open }) => {
     return (                                         // state open ro be soorat prop be in dadim
-        <button className="ToggleBtn" onClick={() => setOpen(prev => !prev)}>
+        <button className="ToggleBtn" style={{background:(open ? "transparent" : "#0c0c1d")}} onClick={() => setOpen(prev => !prev)}>
             <svg width="23" height="23" viewBox='0 0 23 23'>   {/* bahs svg ro bayad yad bgirim */} 
                 <motion.path strokeWidth="3" stroke='white' strokeLinecap='round' variants={{close: {d: "M 2 2.5 L 20 2.5"},open:{d: "M 3 16.5 L 17 2.5"}}}/>  {/* az state ke be inja pass dade shode estefade mikonim */}
                 <motion.path strokeWidth="3" stroke='white' strokeLinecap='round' d="M 2 9.423 L 20 9.426" variants={{close:{opacity:1},open:{opacity:0}}}/>
