@@ -1,4 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { motion } from "framer-motion";
 import "../../../styles/TaskView.css";
 import { useSelector , useDispatch } from "react-redux";
 import { useState } from "react";
@@ -19,7 +20,7 @@ const TaskView = () => {
 
 
     return (
-        <div className="TaskViewContainer">
+        <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{duration:0.5}} className="TaskViewContainer">
             <div className="TaskViewWrapper">
                 {isViewEdit === false ? 
                     <div className="TaskViewContent">
@@ -61,7 +62,7 @@ const TaskView = () => {
                     </form>
                 }
             </div>
-        </div>
+        </motion.div>
     );
 }
  
