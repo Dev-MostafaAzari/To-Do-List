@@ -20,13 +20,13 @@ const TaskView = () => {
 
 
     return (
-        <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{duration:0.5}} className="TaskViewContainer">
+        <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{duration:0.3}} className="TaskViewContainer">
             <div className="TaskViewWrapper">
                 {isViewEdit === false ? 
                     <div className="TaskViewContent">
                         <div className="ViewTitleAndPriorityContainer">
                             <p className="TaskViewTodoTitle"><span className="ViewTitle">Title : </span>{ViewTask.Title}</p>
-                            <span className="ViewPriority">Priority : <span style={{color:(ViewTask.Priority === "High" ? "red" : (ViewTask.Priority === "Mid" ? "lightBlue" :"Gray"))}}>{ViewTask.Priority}</span> </span>
+                            <span className="ViewPriority">Priority : <span style={{color:(ViewTask.Priority === "High" ? "red" : (ViewTask.Priority === "Mid" ? "Yellow" :"Gray"))}}>{ViewTask.Priority}</span> </span>
                         </div>
                         <div className="ViewDiscriptAndOperations">
                             <p className="TaskViewTodoDiscript"><span className="ViewDescript">Description : </span>{ViewTask.Descript}</p>
