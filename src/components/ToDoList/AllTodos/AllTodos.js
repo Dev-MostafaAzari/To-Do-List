@@ -1,5 +1,5 @@
 import { useSelector , useDispatch } from "react-redux";
-import {DeleteTodo,CancelEdit,TaskDone, ViewTask} from "../../../features/TodoManual/todoManualSlice";
+import {DeleteTodo,TaskDone, ViewTask} from "../../../features/TodoManual/todoManualSlice";
 import "../../../styles/AllTodos.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckSquare, faEye, faTrashCan} from "@fortawesome/free-solid-svg-icons";
