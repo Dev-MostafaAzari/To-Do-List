@@ -12,6 +12,9 @@
     flex-direction: row;
     padding: 20px;
 }
+
+/*-----EmptyCompletedTaskList-----*/
+
 .EmptyCompletedTasks
 {
     width: 100%;
@@ -27,6 +30,9 @@
     font-family: 'Times New Roman', Times, serif;
     color: lightgray;
 }
+
+/*-----CompletedTaskList-----*/
+
 .CompletedList
 {
     width: 100%;
@@ -41,7 +47,9 @@
     scrollbar-width: none;
     position: relative;
 }
-/*TaskCard(Completed)*/
+
+/*-----TaskCard(Completed)-----*/
+
 .CompletedTaskCard
 {
     width: 400px;
@@ -126,7 +134,9 @@
 {
     color:red;
 }
-/*DeleteCompletedAlert*/
+
+/*-----DeleteCompletedAlert-----*/
+
 .DeleteCompletedTask
 {
     width: 100%;

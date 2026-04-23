@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import {useState} from 'react';
 import "../../../styles/Completed.css";
 import { useDispatch, useSelector } from 'react-redux';
 import { faTrashCan, faUndo } from '@fortawesome/free-solid-svg-icons';
