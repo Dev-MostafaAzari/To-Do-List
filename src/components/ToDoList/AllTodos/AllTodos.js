@@ -13,7 +13,6 @@ const AllTodos = () => {
 
     const DeleteItem = (id) =>{
         dispatch(DeleteTodo(id));   //need to pass the elements id 
-        dispatch(CancelEdit(id));
     };
     
     
