@@ -3,6 +3,7 @@
     height: calc(100vh - 100px);
     width: 100%;
     background: linear-gradient(180deg , #0c0c1d,#111134);
+    overflow: scroll;
 }
 .ToDoListWrapper
 {
@@ -15,6 +16,7 @@
     justify-content: center;
     position: relative;
     gap: 20px;
+    min-height: 500px;
 }
 .ListHeader
 {
