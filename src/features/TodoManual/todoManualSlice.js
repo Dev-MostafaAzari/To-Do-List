@@ -14,10 +14,12 @@ const ManualSlice = createSlice({
     name:"ManualTodo",
     initialState,
     reducers:{
-        AddTodo:(state,action)=>{   // value jadid ro dar TodoList mirize
+        // value jadid ro dar TodoList mirize
+        AddTodo:(state,action)=>{   
             state.TodoList.push(action.payload);
         },
-        AddTask:(state)=>{      // inke FormAddTask Namayesh dade bshe ya na
+        // inke FormAddTask Namayesh dade bshe ya na
+        AddTask:(state)=>{      
             state.addTask = !state.addTask;
         },
         DeleteTodo:(state,action)=>{
@@ -27,6 +29,7 @@ const ManualSlice = createSlice({
             state.CompletedTasks.push(state.TodoList.find(item => item.id === action.payload));
             state.TodoList.splice(state.TodoList.findIndex(item => item.id === action.payload),1);
         },
+        //Task complete ro bazgardani mikone
         TaskUnDone:(state,action)=>{
             state.TodoList.push(state.CompletedTasks.find(item => item.id === action.payload));
             state.CompletedTasks.splice(state.CompletedTasks.findIndex(item => item.id === action.payload),1);
