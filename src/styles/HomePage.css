@@ -2,8 +2,10 @@
 {
     color:white;
     height: calc(100vh - 100px);
-    overflow: hidden;
+    min-height: 500px;
+    overflow: scroll;
     position: relative;
+    scrollbar-width: none;
 }
 .HomeWrapper
 {
@@ -62,6 +64,10 @@
 
 @media (max-width:738px)
 {
+    .HomePage
+    {
+        scrollbar-width: thin !important;
+    }
     .HomeWrapper
     {
         flex-direction: column !important;
