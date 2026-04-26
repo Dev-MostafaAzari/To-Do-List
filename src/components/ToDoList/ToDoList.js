@@ -96,8 +96,8 @@ const DoList = () => {
                         </div>
                         <h1>Create New Task</h1>
                         <form onSubmit={(e)=>AddTodoHandle(todo,e)} className="AddTaskInput">
-                            <input type="text" value={todo.Title} required onChange={(e) => setTodo({...todo , Title:e.target.value , id:Math.floor(Math.random()*10000000)})} placeholder="Task Name" />   {/* creating a random Id while creating Title for element */}
-                            <input type="text" value={todo.Descript} required onChange={(e) => setTodo({...todo , Descript:e.target.value})} placeholder="Task Discription" />
+                            <input type="text" id="AddTodoTitleInput" value={todo.Title} required onChange={(e) => setTodo({...todo , Title:e.target.value , id:Math.floor(Math.random()*10000000)})} placeholder="Task Name" />   {/* creating a random Id while creating Title for element */}
+                            <input type="text" id="AddTodoDiscriptInput" value={todo.Descript} required onChange={(e) => setTodo({...todo , Descript:e.target.value})} placeholder="Task Discription" />
                             <select id="priority" value={todo.Priority} onChange={(e)=> setTodo({...todo , Priority : e.target.value})}>
                                 <option value="Low">Low</option>
                                 <option value="Mid">Mid</option>

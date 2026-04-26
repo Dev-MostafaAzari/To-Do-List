@@ -90,6 +90,11 @@
     font-family:'Times New Roman', Times, serif;
     color: blue;
     padding-left: 5px;
+    width: 100%;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .AllTodoTaskDescript
 {
