@@ -32,6 +32,17 @@
 }
 
 /*-----CompletedTaskList-----*/
+.CompletedListMain
+{
+    width: 100%;
+    height:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: scroll;
+    scrollbar-width: none;
+    position: relative;
+}
 
 .CompletedList
 {
@@ -151,7 +162,7 @@
 {
     padding: 20px;
     border-radius: 15px;
-    background: white;
+    background: lightgray;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -180,4 +191,48 @@
     border: 1px solid rgba(128, 128, 128, 0.479);
     cursor: pointer;
     transition: all 0.5s;
+}
+
+/*-----Responsive-----*/
+
+/*-----Mobile-----*/
+@media(max-width:738px)
+{
+    /*-----Main-----*/
+    .CompletedListMain
+    {
+        scrollbar-width: thin !important;
+    }
+    /*-----CompletedList-----*/
+    .CompletedList
+    {
+        justify-content: center !important;
+    }
+    /*-----DeleteAlert-----*/
+    .DeleteCompletedTask
+    {
+        backdrop-filter: blur(5px);
+    }
+    /*-----EmptyCompleted-----*/
+    .EmptyCompletedTasks p 
+    {
+        font-size: 20px !important;
+    }
+}
+
+/*-----Tablet-----*/
+@media(max-width:1280px)
+{
+    .CompletedList
+    {
+        justify-content: center;
+    }
+    .CompletedTaskCard
+    {
+        max-width: 340px;
+    }
+    .DeleteCompletedTask
+    {
+        backdrop-filter: blur(5px);
+    }
 }
