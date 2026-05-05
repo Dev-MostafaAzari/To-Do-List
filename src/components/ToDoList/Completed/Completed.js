@@ -22,7 +22,7 @@ const Completed = ()=>{
                     <div className="CompletedListMain">
                             <div className="CompletedList">
                                 {CompletedTasks.map((item) => 
-                                    <div className="CompletedTaskCard">
+                                    <div className="CompletedTaskCard" key={item.id}>
                                         <div className="CompletedTaskCardTitle">
                                             <p className="CompletedCardTitle">{item.Title}</p>
                                         </div>

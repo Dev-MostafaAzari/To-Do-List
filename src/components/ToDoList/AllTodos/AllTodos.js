@@ -28,7 +28,7 @@ const AllTodos = () => {
                     <div className="AllTodosListMain">
                         <div className="AllTodosList">
                             {TodoList.map((item) => 
-                                <div className="AllTodoTaskCard">
+                                <div className="AllTodoTaskCard" key={item.id}>
                                     <div className="AllTodoTaskCardTitle">
                                         <p className="AllTodoCardTitle">{item.Title}</p>
                                     </div>
