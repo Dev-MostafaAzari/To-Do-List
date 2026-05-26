@@ -2,7 +2,7 @@
   "name": "redux-yup-axios",
   "version": "0.1.0",
   "private": true,
-  "homepage":"https://Dev-MostafaAzari.github.io/To-Do-List",
+  "homepage": "https://Dev-MostafaAzari.github.io/To-Do-List",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^7.1.0",
     "@fortawesome/free-brands-svg-icons": "^7.1.0",
@@ -24,6 +24,7 @@
     "react-redux": "^9.2.0",
     "react-router-dom": "^7.9.3",
     "react-scripts": "5.0.1",
+    "react-use": "^17.6.0",
     "redux-logger": "^3.0.6",
     "web-vitals": "^2.1.4",
     "yup": "^1.7.0"
@@ -33,8 +34,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "predeploy":"npm run build",
-    "deploy":"gh-pages -d build"
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
