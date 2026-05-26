@@ -1,6 +1,9 @@
 .LoginRegisterMain
 {
     height: calc(100vh - 100px);
+    min-height: 500px;
+    overflow: scroll;
+    scrollbar-width: none;
     background: linear-gradient(180deg, #0c0c1d , #111134 );
 }
 .FormsWrapper
@@ -11,7 +14,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: scroll;
     scrollbar-width: none;
 }
 .LoginDiv
@@ -136,6 +138,10 @@
 
 @media (max-width:738px)
 {
+    .LoginRegisterMain
+    {
+        scrollbar-width: thin !important;
+    }
     .FormsWrapper
     {
         width: 100% !important;

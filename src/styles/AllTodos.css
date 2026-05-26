@@ -1,0 +1,301 @@
+.AllTodosContainer
+{
+    width: 100%;
+    height: calc(100% - 70px);
+    background: transparent;
+}
+.AllTodosWrapper
+{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    padding: 20px;
+}
+.AllTodosListMain
+{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+.AllTodosList
+{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: start;
+    align-items: start;
+    gap: 5px;
+    overflow: scroll;
+    scrollbar-width: none;
+    position: relative;
+}
+
+/*-----AllTodosEmptyPart-----*/
+
+.EmptyTodoContainer
+{
+    width: 100%;
+    height:100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.EmptyTodosTitle
+{
+    font-size: 45px;
+    color: lightgray;
+    font-family: 'Times New Roman', Times, serif;
+}
+.EmptyTodosTitle2
+{
+    font-size: 35px;
+    color: rgba(211, 211, 211, 0.541);
+    font-family: 'Times New Roman', Times, serif;
+}
+
+/*-----EachTodosCard-----*/
+
+.AllTodoTaskCard
+{
+    width: 400px;
+    height: 300px;
+    border-radius: 15px;
+    background: whitesmoke;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    gap:5px;
+    overflow: hidden;
+}
+.AllTodoTaskCardTitle
+{
+    flex: 2;
+    display: flex;
+    align-items: end;
+    justify-content: center;
+}
+.AllTodoCardTitle
+{
+    font-size: 25px;
+    font-family:'Times New Roman', Times, serif;
+    color: blue;
+    padding-left: 5px;
+    width: 100%;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.AllTodoTaskDescript
+{
+    border-top: 1px dashed gray;
+    flex: 2;
+    padding: 15px;
+    position: relative;
+}
+.AllTodoCardDiscript
+{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow:ellipsis;
+    color: black;
+}
+.AllTodoCardDiscript span 
+{
+    font-weight: 600;
+    color:rgba(0, 0, 0, 0.8);
+}
+.AllTodoCardSpan
+{
+    position: absolute;
+    width: 70px;
+    text-align: center;
+    transform: rotate(-50deg);
+    top: 10px;
+    left: -20px;
+    cursor: default;
+
+}
+.ViewThisTask
+{
+    position: absolute;
+    top:10px;
+    right:10px;
+    font-size: 20px;
+    border: none;
+    background: transparent;
+    color:blue;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+.ViewThisTask:hover
+{
+    color:gray;
+}
+.AllTodoOperationBtns
+{
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    padding: 10px;
+    gap: 10px;
+    background: rgba(255, 166, 0, 0.5);
+}
+.AllTodoOperationBtns button
+{
+    font-size: 30px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    background: transparent;
+}
+.CheckTodo
+{
+    color:green;
+}
+.DeleteTodo
+{
+    color:navy;
+}
+
+/*-----DeleteTaskAlert-----*/
+
+.DeleteAlertContainer
+{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+    position: absolute;
+}
+.DeleteConfirmationContainer
+{
+    background: lightgray;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border-radius: 15px;
+
+}
+.DeleteConfirmationContainer p
+{
+    color: black;
+    font-size: 25px;
+}
+.DeleteConfirmationContainer div 
+{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+.DeleteConfirmationContainer div button
+{
+    padding: 5px;
+    font-size: 25px;
+    border-radius: 15px;
+    border: 1px solid rgba(128, 128, 128, 0.479);
+    cursor: pointer;
+    transition: all 0.5s;
+}
+#CancelDelete
+{
+    background: lightgray;
+}
+#ConfirmDelete
+{
+    background: rgba(255, 0, 0, 0.5);
+}
+#CancelDelete:hover
+{
+    background: gray;
+}
+#ConfirmDelete:hover
+{
+    background: red;
+}
+
+/*-----Responsive Part-----*/
+
+/*-----Responsive Mobile-----*/
+@media (max-width:738px)
+{   
+    /*-----Main-----*/
+    
+    .AllTodosList
+    {
+        justify-content: center !important;
+        flex-direction: row !important;
+    }
+
+    /*-----EmptyTodo-----*/
+
+    .EmptyTodosTitle
+    {
+        font-size: 23px;
+    }
+    .EmptyTodosTitle2
+    {
+        font-size: 20px;
+    }
+
+    /*-----DeleteTaskAlert-----*/
+
+    .DeleteAlertContainer
+    {
+        backdrop-filter: blur(5px);
+    }
+
+    .DeleteConfirmationContainer
+    {
+        padding: 15px !important;
+        text-align: center !important;
+    }
+}
+
+/*-----Responsive Tablet-----*/
+@media (max-width:1280px)
+{
+    /*-----Main-----*/
+    .AllTodosList
+    {
+        flex-direction: row;
+        justify-content: center;
+    }
+    /*-----TaskCard-----*/
+    .AllTodoTaskCard
+    {
+        max-width:340px;
+    }
+
+    /*-----DeleteTaskAlert-----*/
+
+    .DeleteAlertContainer
+    {
+        backdrop-filter: blur(5px);
+    }
+
+    .DeleteConfirmationContainer
+    {
+        padding: 15px !important;
+        text-align: center !important;
+    }
+}

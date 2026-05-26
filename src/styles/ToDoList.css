@@ -3,10 +3,11 @@
     height: calc(100vh - 100px);
     width: 100%;
     background: linear-gradient(180deg , #0c0c1d,#111134);
+    overflow: scroll;
+    scrollbar-width: none;
 }
 .ToDoListWrapper
 {
-    width: 1366px;
     height: 100%;
     color:white;
     margin: auto;
@@ -15,12 +16,14 @@
     justify-content: center;
     position: relative;
     gap: 20px;
+    min-height: 500px;
 }
 .ListHeader
 {
     width: 100%;
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 .ListHeader h1 
 {
@@ -30,66 +33,99 @@
 .TodoContainer
 {
     display:flex;
+    margin: 20px;
     flex-direction: row;
     border: 1px solid gray;
-    border-radius: 15px;
+    border-style: dashed;
+    border-radius: 0px 0px 35px 35px;
     overflow: hidden;
+    height: 100%;
 }
 .DoLists
 {
     width: 100%;
-    height: 700px;
-    overflow: scroll;
-    scrollbar-width:none;
-    scroll-snap-type: mandatory;
+    height: 100%;
+    overflow: hidden;
     background-color: transparent;
+    position: relative;
 }
-.DoLists table
+
+/*-----TodosBtnPart-----*/
+
+.TodosTabBtns
 {
     width: 100%;
+    padding: 10px;
+    display: flex;
+    gap: 5px;
+    position: relative;
 }
-.DoLists tbody
+.SwitchBtns
 {
-    text-align: center;
+    width: 100%;
+    display: flex;
+    gap: 5px;
 }
-.DoLists th 
+.TodosTabBtn
 {
-    font-size: 40px;
-}
-.DoLists td
-{
-    padding: 20px;
+    padding: 10px;
     font-size: 20px;
+    cursor: pointer;
+    border-radius: 15px;
+    border: none;
+    background: orange;
 }
-.DoLists table
+.disabledTodosTabBtn
 {
-    border-collapse: collapse;
+    padding: 10px;
+    font-size: 20px;
+    border-radius: 15px;
+    border: none;
+    background: gray;
 }
-.DoLists th 
+
+/*-----sort Todos btns-----*/
+
+.SortSection
 {
-    border-bottom: 1px solid gray;
+    position: absolute;
+    right: 0px;
+    padding: 10px;
+    display: flex;
+    gap: 10px;
 }
-.DoLists td 
+.SortSection button
 {
-    border-bottom: 1px solid rgba(116, 115, 115, 0.5);
+    font-size: 30px;
+    background: transparent;
+    color: gray;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s;
 }
-.DoLists input 
+.SortSection button:hover
 {
-    scale: 2;
+    color:lightgray;
 }
-.buttons
+
+/*-----AddNewTask-----*/
+
+.NewTaskBtnContainer
 {
     width: 100%;
     display: flex;
     align-items: start;
-    justify-content: end;
+    justify-content: center;
+    padding: 10px;
 }
-.buttons button 
+.NewTaskBtnContainer button 
 {
     padding: 20px;
     font-size: 20px;
     border-radius: 15px;
     cursor: pointer;
+    transition: all 0.5s;
+    border: none;
 }
 .AddTaskWrapper
 {
@@ -97,19 +133,19 @@
     height: 100%;
     position: absolute;
     z-index: 998;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
 }
 .AddTask
 {
-    position: absolute;
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 600px;
     height: 500px;
-    gap:10px;
-    top:50%;
-    left:50%;
-    transform: translate(-50% , -50% );
     z-index: 998;
     background-color: white;
     color: black;
@@ -145,12 +181,29 @@
     align-items: center;
     gap: 20px;
 }
-.AddTaskInput input 
+#AddTodoTitleInput
+{
+    padding: 20px;
+    width: 500px;
+    border: 2px solid gray;
+    border-radius: 20px;
+    font-size: 20px;
+}
+#AddTodoDiscriptInput
+{
+    padding: 20px;
+    width: 500px;
+    border: 2px solid gray;
+    border-radius: 20px;
+    font-size: 20px;
+}
+.AddTaskInput select 
 {
     width: 500px;
     padding: 20px;
     font-size: 20px;
     border-radius: 20px;
+    border:2px solid gray;
 }
 .AddTaskInput button 
 {
@@ -162,138 +215,19 @@
     color:white;
     border:none;
 }
-.LoadingAnimation
-{
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    background-color: transparent;
-    border: 3px solid darkcyan;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-}
-.LoadingAnimation2
-{
-    margin: auto;
-    background-color: transparent;
-    border: 2px solid lightblue;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-}
-.TodoOprations
-{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    gap: 15px;
-}
-.EditTodo
-{
-    font-size: 30px;
-    background-color: transparent;
-    color:orange;
-    border:none;
-    cursor: pointer;
-}
-.EditInputTitle
-{
-    background: transparent;
-    color:gray;
-    border:1px solid lightgray;
-    border-radius: 5px;
-    width: 150px;
-    padding: 3px;
-    outline: none;
-}
-.EditInputDeadLine
-{
-    background: transparent;
-    color:gray;
-    border:1px solid lightgray;
-    border-radius: 5px;
-    width: 40px;
-    padding: 3px;
-    outline: none;
-}
-.EditInputStatus
-{
-    background: transparent;
-    color:gray;
-    border:1px solid lightgray;
-    width: 150px;
-    border-radius: 5px;
-    padding: 3px;
-    outline: none;
-}
-.ChangeEdit
-{
-    cursor: pointer;
-    font-size: 25px;
-    background-color: transparent;
-    border: none;
-    color:green;
-}
-.CancelEdit
-{
-    cursor: pointer;
-    font-size: 25px;
-    background-color: transparent;
-    border: none;
-    color:red;
-}
-.TimerTD
-{
-    padding: 0px !important;
-}
-.TodoTabs
-{
-    display: flex;
-    flex-direction: column;
-    list-style: none;
-    border:none;
-    border-right: 1px solid gray;
-    border-radius: 0px;
-    background-color: transparent;
-    width: 200px;
-}
-.TodoTabs li 
-{
-   font-size: 40px;
-   text-align: center;
-   width: 100%;
-   height: 75px;
-}
-.TodoTabs li button
-{
-    width: 100%;
-    height: 100%;
-    background-color: gray;
-    font-size: 20px;
-    font-weight: 700;
-    border: none;
-    cursor: pointer;
-}
-.MenuLi
-{
-    border-bottom: 1px solid gray;
-    text-align: center;
-    height: auto !important;
-}
 
-
-
+/*-----Responsive Mobile-----*/
 
 @media (max-width:738px)
 {
+    .ToDoList
+    {
+        scrollbar-width: thin !important;
+    }
     .ToDoListWrapper
     {
         width: 100% !important;
+        gap: 0px !important;
     }
     .TodoContainer
     {
@@ -309,31 +243,73 @@
     {
         font-size: 20px !important;
     }
-    .DoLists th 
+
+    /*-----TodoTabsBtns-----*/
+    .TodosTabBtns
     {
-        font-size: 18px !important;
+        flex-direction: column;
+        padding: 0px !important;
+        gap: 7px !important;
     }
-    .DoLists td 
+    .SwitchBtns
     {
-        font-size: 15px !important;
+        justify-content: center !important;
+        border-bottom: 1px solid gray !important;
+        padding: 5px !important;
     }
-    .buttons
+    .TodosTabBtn
+    {
+        width: 120px !important;
+        height: 30px !important;
+        padding: 5px !important;
+        font-size: 13px !important;
+        border-radius: 10px !important;
+    }
+    .disabledTodosTabBtn
+    {
+        width: 120px !important;
+        height: 30px !important;
+        padding: 5px !important;
+        font-size: 13px !important;
+        border-radius: 10px !important;
+    }
+
+    /*-----sort Todos btns-----*/
+    .SortSection
+    {
+        position: relative !important;
+        padding: 0px !important;
+        padding-top: 5px !important;
+        padding-right: 5px !important;
+        display: flex !important;
+        justify-content: end !important;
+        gap: 10px !important;
+    }
+    .SortSection button
+    {
+        font-size: 20px !important;
+        
+    }
+
+    /*-----AddNewTask-----*/
+
+    .NewTaskBtnContainer
     {
         justify-content: center !important;
     }
-    .buttons button 
+    .NewTaskBtnContainer button 
     {
         padding: 10px !important;
         font-size: 20px !important;
         margin-top: 5px !important;
     }
-    .DoLists input 
+    .AddTodoInput 
     {
         scale: 1.5 !important;
     }
     .AddTask
     {
-        width: 100% !important;
+        width: 90% !important;
         height: 300px !important;
         padding: 10px !important;
     }
@@ -345,96 +321,43 @@
     {
         gap:15px !important;
     }
-    .AddTaskInput input 
+    #AddTodoTitleInput 
+    {
+        padding: 5px !important;
+        width: 300px !important;
+        border-radius: 10px !important;
+        font-size: 15px !important;
+    }
+    #AddTodoDiscriptInput
+    {
+        padding: 5px !important;
+        width: 300px !important;
+        border-radius: 10px !important;
+        font-size: 15px !important;
+    }
+    .AddTaskInput button 
+    {
+        padding: 10px !important;
+        font-size: 15px !important;
+        border-radius: 10px !important;
+    }
+    .AddTaskInput select 
     {
         width: 300px !important;
         padding: 5px !important;
         font-size: 15px !important;
         border-radius: 10px !important;
     }
-    .AddTaskInput button 
-    {
-        padding: 10px;
-        font-size: 15px;
-        border-radius: 10px;
-    }
-    .LoadingAnimation
-    {
-        top:30% !important;
-        left: 45% !important;
-        transform: translate(-50%,-50%) !important;
-
-    }
-    .TodoOprations
-    {
-        gap: 10px !important;
-    }
-    .EditTodo
-    {
-        font-size: 20px !important;
-    }
-    .EditInputTitle
-    {
-        padding: 3px !important;
-        width: 70px !important;
-    }
-    .EditInputDeadLine
-    {
-        padding: 3px !important;
-        width: 30px !important;
-    }
-    .EditInputStatus
-    {
-        padding: 3px !important;
-        width: 40px !important;
-    }
-    .ChangeEdit
-    {
-        font-size: 20px !important;
-    }
-    .CancelEdit
-    {
-        font-size: 20px !important;
-    }
-    .TodoTabs
-    {
-        flex-direction: column !important;
-        border-right: none !important;
-        width: 100%;
-    }
-    .TodoTabs li 
-    {
-        font-size: 18px !important;
-        width: 100% !important;
-    }
-    .TabsBtns
-    {
-        display: flex !important;
-        width: 100% !important;
-        flex-direction: row !important;
-    }
-    .TabsBtns li 
-    {
-        height: 50px !important;
-    }
-    .TodoTabs li button
-    {
-        width: 100% !important;
-        height: 100% !important;
-        font-size: 18px !important;
-        font-weight: 600 !important;
-    }
-    .MenuLi
-    {
-        height: auto !important;
-    }
 }
+
+/*-----Responsive Tablet-----*/
+
 @media (max-width:1280px)
 {
     .ToDoListWrapper
     {
         width: 100%;
-        gap: 30px;
+        gap: 0px;
         overflow: scroll;
         scrollbar-width: none;
     }
@@ -446,31 +369,26 @@
     {
         font-size: 40px;
     }
-    .DoLists th 
-    {
-        font-size: 20px;
-    }
-    .DoLists td 
-    {
-        font-size: 18px;
-    }
-    .buttons
+    
+    /*-----AddNewTask-----*/
+    
+    .NewTaskBtnContainer
     {
         justify-content: center;
     }
-    .buttons button 
+    .NewTaskBtnContainer button 
     {
         padding: 20px;
         font-size: 20px;
         margin-top: 5px;
     }
-    .DoLists input 
+    .AddTodoInput
     {
         scale: 1.5;
     }
     .AddTask
     {
-        width: 100%;
+        width: 90%;
         height: 500px;
     }
     .AddTask h1 
@@ -481,16 +399,22 @@
     {
         gap:15px;
     }
-    .AddTaskInput input 
+    #AddTodoTitleInput 
+    {
+        padding: 15px;
+        width: 400px;
+        font-size: 15px;
+    }
+    #AddTodoDiscriptInput
+    {
+        padding: 15px;
+        width: 400px;
+        font-size: 15px;
+    }
+    .AddTaskInput select 
     {
         width: 400px;
         padding: 15px;
         font-size: 15px;
-    }
-    .LoadingAnimation
-    {
-        top:30%;
-        left: 45%;
-        transform: translate(-50%,-50%);
     }
 }
