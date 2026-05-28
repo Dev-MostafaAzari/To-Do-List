@@ -4,9 +4,9 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     addTask : false,
     isInTaskView : false,
-    TodoList : [{Title:"Say Hello to the World",Descript:"My first Task",Priority:"High",id:Math.floor(Math.random()*10000000)}], //list Hame TodoLists
-    CompletedTasks:[{Title:"Get To this point",Descript:"nothing",Priority:"Low",id:Math.floor(Math.random()*10000000)}],   //List Completed Todos
-    ViewTask : {}, // yek element ro ke ViewMishavad ro dar bar migirad                                                                                                                                
+    TodoList : [{Title:"Say Hello to the World",Descript:"My first Task",Priority:"High",id:Math.floor(Math.random()*10000000)}], //All Tasks
+    CompletedTasks:[{Title:"Get To this point",Descript:"nothing",Priority:"Low",id:Math.floor(Math.random()*10000000)}],   // Completed Tasks
+    ViewTask : {}, // selectedTaskforView                                                                                                                                
 };
 
 
@@ -14,22 +14,22 @@ const ManualSlice = createSlice({
     name:"ManualTodo",
     initialState,
     reducers:{
-        // value jadid ro dar TodoList mirize
+        // Create New Task
         AddTodo:(state,action)=>{   
             state.TodoList.push(action.payload);
         },
-        // inke FormAddTask Namayesh dade bshe ya na
+        // AddTask status
         AddTask:(state)=>{      
             state.addTask = !state.addTask;
         },
         DeleteTodo:(state,action)=>{
-            state.TodoList.splice(state.TodoList.findIndex(item => item.id === action.payload),1);  //ebteda ba findIndex , index {} ro dar array peda mikonim va ba splice delete mikonim
+            state.TodoList.splice(state.TodoList.findIndex(item => item.id === action.payload),1);  //delete selected task
         },
         TaskDone:(state,action)=>{
             state.CompletedTasks.push(state.TodoList.find(item => item.id === action.payload));
             state.TodoList.splice(state.TodoList.findIndex(item => item.id === action.payload),1);
         },
-        //Task complete ro bazgardani mikone
+        //Change Completed Task To UnComplete
         TaskUnDone:(state,action)=>{
             state.TodoList.push(state.CompletedTasks.find(item => item.id === action.payload));
             state.CompletedTasks.splice(state.CompletedTasks.findIndex(item => item.id === action.payload),1);
