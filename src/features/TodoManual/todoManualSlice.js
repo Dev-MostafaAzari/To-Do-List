@@ -1,23 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 
-const loadData = ()=>{
-    if (typeof window === "undefined")
-    {
-        return [];
-    }
-    const data = JSON.parse(localStorage.getItem("Todos") || "{}")   //Saved Todos On LocalStorage
-    if(!data) return {};
-    return data;
 
-}
-const savedData = loadData();
 
 const initialState = {
     addTask : false,
     isInTaskView : false,
-    TodoList : savedData.TodoList, //All Tasks
-    CompletedTasks:savedData.CompletedTasks,   // Completed Tasks
+    TodoList : [], //All Tasks
+    CompletedTasks:[],   // Completed Tasks
     ViewTask : {}, // selectedTaskforView                                                                                                                                
 };
 
