@@ -14,6 +14,12 @@ const store = configureStore({
     },
     middleware : (getDefaultMiddleware)=> getDefaultMiddleware().concat(logger),
 })
+// create LocalStorage 
+store.subscribe(()=>{
+    const {TodoList , CompletedTasks} = store.getState().manualTodo;    // selecting items we want to save
+    localStorage.setItem("Todos",JSON.stringify({TodoList , CompletedTasks}));
+})
+
 
 
 export default store;
