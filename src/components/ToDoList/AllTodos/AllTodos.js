@@ -6,7 +6,7 @@ import { faCheckSquare, faEye, faTrashCan} from "@fortawesome/free-solid-svg-ico
 import { useState } from "react";
 
 const AllTodos = () => {
-    const {TodoList} = useSelector(state => state.manualTodo)
+    const {TodoList} = useSelector(state => state.manualTodo);
     const dispatch = useDispatch();
     const [deleteAlert,setDeleteAlret]=useState(false);
     const [deleteItemId,setDeleteAlertId]=useState();

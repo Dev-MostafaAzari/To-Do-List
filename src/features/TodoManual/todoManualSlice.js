@@ -6,7 +6,8 @@ const loadData = ()=>{
     {
         return [];
     }
-    const data = JSON.parse(localStorage.getItem("Todos") || "{}")   //Saved Todos On LocalStorage
+    const data = JSON.parse(localStorage.getItem("Todos"))   //Saved Todos On LocalStorage
+    if(!data) return {};
     return data;
 
 }
