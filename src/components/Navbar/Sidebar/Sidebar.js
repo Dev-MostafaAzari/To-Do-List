@@ -51,9 +51,9 @@ const Sidebar = () => {
         <div className="Sidebar">
             <motion.div className="bg" variants={variants} animate={open ? "open" : "close"}>
                 <motion.div className="Links" variants={ListVariants} animate={open ? "open" : "close"}>
-                    <motion.a variants={ListVariants} whileHover={{scale:1.1,transition:{duration:0.3}}} whileTap={{scale:0.9}} onClick={()=>{setOpen(prev=>prev=!prev)}} ><Link to="/To-Do-List">HomePage</Link></motion.a>
+                    <motion.a variants={ListVariants} whileHover={{scale:1.1,transition:{duration:0.3}}} whileTap={{scale:0.9}} onClick={()=>{setOpen(prev=>prev=!prev)}} ><Link to="/">HomePage</Link></motion.a>
                     <motion.a variants={ListVariants} whileHover={{scale:1.1,transition:{duration:0.3}}} whileTap={{scale:0.9}} onClick={()=>{setOpen(prev=>prev=!prev)}}><Link to="/Login">Login</Link></motion.a>
-                    <motion.a variants={ListVariants} whileHover={{scale:1.1,transition:{duration:0.3}}} whileTap={{scale:0.9}} onClick={()=>{setOpen(prev=>prev=!prev)}}><Link to="ToDoList">ToDoList</Link></motion.a>
+                    <motion.a variants={ListVariants} whileHover={{scale:1.1,transition:{duration:0.3}}} whileTap={{scale:0.9}} onClick={()=>{setOpen(prev=>prev=!prev)}}><Link to="/Todos">ToDoList</Link></motion.a>
                 </motion.div>
                 <ToggleButton setOpen={setOpen} open={open} />
             </motion.div>

@@ -8,13 +8,13 @@ import HomePage from "./components/HomePage/HomePage";
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/To-Do-List">
       <div className="App">
         <Navbar/>
         <Routes>
-          <Route path="/To-Do-List" element={<HomePage/>}/>
+          <Route path="/" element={<HomePage/>}/>
           <Route path="/Login" element={<LoginRegister/>}/>
-          <Route path="/ToDoList" element={<DoList/>}/>
+          <Route path="/Todos" element={<DoList/>}/>
         </Routes>
       </div>
     </BrowserRouter>
