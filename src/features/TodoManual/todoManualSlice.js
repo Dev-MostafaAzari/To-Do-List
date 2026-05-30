@@ -1,7 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 
-const savedData = JSON.parse(localStorage.getItem("Todos") || "{}")   //Saved Todos On LocalStorage
+const loadData = ()=>{
+    if (typeof window === "undefined")
+    {
+        return [];
+    }
+    const data = JSON.parse(localStorage.getItem("Todos") || "{}")   //Saved Todos On LocalStorage
+    return data;
+
+}
+const savedData = loadData();
 
 const initialState = {
     addTask : false,
